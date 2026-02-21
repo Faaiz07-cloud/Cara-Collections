@@ -1,0 +1,30 @@
+{% extends 'master.html' %} {% load static %} 
+{% block title %}Cara | Home{% endblock %}
+
+{% block content %}
+
+<!-- homepage -->
+<section id="hero">
+  <!-- Background Hero Image -->
+  <img src="{% static 'img/hero4.png' %}" alt="Hero Image" class="hero-bg" />
+
+  <div class="hero-content">
+    <h4>Trade-in-offer</h4>
+    <h2>Super Value Deals</h2>
+    <h1>On all Products</h1>
+    <p>Save more with coupons & upto 70% off!</p>
+
+    <!-- Button with image -->
+    <button id="1001" data-url="{% url 'shop' %}">
+      <img
+        src="{% static 'img/button.png' %}"
+        alt="Button BG"
+        class="btn-img"
+      />
+      <span>Shop Now</span>
+    </button>
+  </div>
+</section>
+<!-- homepage -->
+
+{% endblock %}
