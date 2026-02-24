@@ -1,11 +1,11 @@
 {% extends 'master.html' %}
 
 {% load static %}
-  
-{% block title %} 
-Cara | Home 
-{% endblock %} 
-  
+
+{% block title %}
+Cara | Home
+{% endblock %}
+
 {% block content %}
 
 <!-- homepage -->
@@ -398,5 +398,196 @@ Cara | Home
   </div>
 </section>
 <!-- banner -->
+
+<!-- new arrivals -->
+<section id="product1" class="section-p1">
+  <h2>New Arrivals</h2>
+  <p class="new">Hot off the shelves ready for you</p>
+  <div class="product-box">
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/i1.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Puma</span>
+        <h5>Casual Button-up Shirt</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$102</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/i2.png' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Jordan</span>
+        <h5>Jordan Sneakers</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$700</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/i3.png' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Lamba</span>
+        <h5>Longcaot Lamba</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$32</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/i4.png' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Nike</span>
+        <h5>White Sneakers</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$67</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/i5.png' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Zara</span>
+        <h5>Athletic Shoes</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$55</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/i6.png' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Nike</span>
+        <h5>Pink Sneakers Air Force 1</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$900</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/i7.png' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Outfitters</span>
+        <h5>Leather Belt</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$90</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/i8.png' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Outfitters</span>
+        <h5>High Fashion Heels</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$30</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+  </div>
+</section>
+<!-- new arrivals -->
+
+<!-- banner-2 -->
+<section id="sm-banner" class="banner-2-section-p1">
+  <div class="banner-1">
+    <img src="{% static 'img/banner/b17.jpg' %}" alt="Crazy Deals" />
+    <div class="banner-content">
+      <h4>Crazy Deals</h4>
+      <h2>Buy 1 Get 1 Free</h2>
+      <span>The Best Classic Dress is on sale at Cara</span>
+      <button>Learn More</button>
+    </div>
+  </div>
+
+  <div class="banner-1">
+    <img src="{% static 'img/banner/b10.jpg' %}" alt="Spring/Summer" />
+    <div class="banner-content">
+      <h4>Spring/Summer</h4>
+      <h2>Upcoming Season</h2>
+      <span>The Best Classic Dress is on sale at Cara</span>
+      <button>Collection</button>
+    </div>
+  </div>
+</section>
+<!-- banner-2 -->
+
+<!-- banner-3 -->
+<section id="banner-3">
+  <div class="banner-1">
+    <img src="{% static 'img/banner/b7.jpg' %}" alt="Seasonal Sale" />
+    <div class="banner-content">
+      <h2>SEASONAL SALE</h2>
+      <h3>Winter Collection -50% OFF</h3>
+    </div>
+  </div>
+
+  <div class="banner-1">
+    <img src="{% static 'img/banner/b4.jpg' %}" alt="New Footwear Collection" />
+    <div class="banner-content">
+      <h2>NEW FOOTWEAR COLLECTION</h2>
+      <h3>Spring/Summer 2022</h3>
+    </div>
+  </div>
+
+  <div class="banner-1">
+    <img src="{% static 'img/banner/b16.jpg' %}" alt="T-Shirts" />
+    <div class="banner-content">
+      <h2>T-SHIRTS</h2>
+      <h3>New Trendy Prints</h3>
+    </div>
+  </div>
+</section>
+<!-- banner-3 -->
 
 {% endblock %}

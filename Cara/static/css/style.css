@@ -458,7 +458,7 @@ products
 /* 
 categories
 */
-.cat-margin{
+.cat-margin {
   margin-top: 25px;
 }
 
@@ -1894,5 +1894,388 @@ About-Page
 @media (max-width: 480px) {
   p {
     margin: 5px 5px 5px 5px;
+  }
+}
+
+/*
+contact page
+*/
+.contact-section-p1 {
+  padding: 60px 80px;
+  background: #f8f9fc;
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  background: #fff;
+  padding: 50px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.contact-info h2,
+.contact-form h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+.contact-desc {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.contact-box {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+.contact-box i {
+  font-size: 20px;
+  color: #088178;
+  margin-top: 5px;
+}
+
+.contact-box h4 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.contact-box p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* form */
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  outline: none;
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #088178;
+}
+
+.contact-form button {
+  background: #088178;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background: #066e67;
+}
+
+/* responsive */
+@media (max-width: 480px) {
+  .contact-section-p1 {
+    padding: 30px 15px;
+  }
+
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 20px;
+  }
+
+  .contact-info h2,
+  .contact-form h2 {
+    font-size: 22px;
+  }
+
+  .contact-desc {
+    font-size: 13px;
+  }
+
+  .contact-box {
+    gap: 10px;
+  }
+
+  .contact-box i {
+    font-size: 18px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+
+  .contact-form button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 900px) {
+  .contact-section-p1 {
+    padding: 50px 40px;
+  }
+
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding: 35px;
+  }
+
+  .contact-info h2,
+  .contact-form h2 {
+    font-size: 26px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  .contact-section-p1 {
+    padding: 60px 60px;
+  }
+
+  .contact-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 40px;
+  }
+}
+
+/*
+cart page
+*/
+.cart-section-p2 {
+  padding: 40px 80px 0 80px;
+  margin-bottom: -25px;
+}
+
+.cart-section-p1 {
+  padding: 40px 80px 5px 80px;
+}
+
+#cart {
+  overflow-x: auto;
+}
+
+#cart table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  white-space: nowrap;
+}
+
+#cart table img {
+  width: 70px;
+}
+
+#cart table td:nth-child(1) {
+  width: 100px;
+  text-align: center;
+}
+
+#cart table td:nth-child(2) {
+  width: 150px;
+  text-align: center;
+}
+
+#cart table td:nth-child(3) {
+  width: 250px;
+  text-align: center;
+}
+
+#cart table td:nth-child(4),
+#cart table td:nth-child(5),
+#cart table td:nth-child(6) {
+  width: 150px;
+  text-align: center;
+}
+
+#cart table td input {
+  width: 70px;
+  padding: 10px 5px 10px 15px;
+}
+
+#cart table thead {
+  border: 1px solid #e2e9e1;
+  border-left: none;
+  border-right: none;
+}
+
+#cart table thead td {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 13px;
+  padding: 18px 0;
+}
+
+#cart table tbody tr td {
+  padding-top: 15px;
+}
+
+#cart table tbody td {
+  font-size: 13px;
+}
+
+#cart-add {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#coupon {
+  width: 50%;
+  margin-bottom: 30px;
+}
+
+#coupon input {
+  padding: 10px 20px;
+  outline: none;
+  width: 60%;
+  border: 1px solid #e2e9e1;
+}
+
+#subtotal {
+  width: 45%;
+  margin-bottom: 30px;
+  border: 1px solid #e2e9e1;
+  padding: 30px;
+}
+
+#subtotal table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#subtotal table td {
+  width: 50%;
+  border: 1px solid #e2e9e1;
+  padding: 10px;
+  font-size: 13px;
+}
+
+#cart-add h3 {
+  padding-bottom: 15px;
+}
+
+button.normal {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 25px;
+  color: #fff;
+  background-color: #088178;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: 0.2s;
+}
+
+button.normal:hover {
+  background-color: #066b64;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .cart-section-p1,
+  .cart-section-p2 {
+    padding: 40px 40px;
+  }
+
+  #cart-add {
+    flex-direction: column;
+  }
+
+  #coupon,
+  #subtotal {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1200px) {
+  #cart table {
+    table-layout: auto;
+  }
+
+  .cart-section-p1 {
+    padding: 40px 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cart-section-p1 {
+    padding: 20px 10px;
+  }
+
+  .cart-section-p2 {
+    padding: 40px 80px 0 80px;
+    margin-bottom: -25px;
+    margin-top: -20px;
+  }
+
+  #cart {
+    overflow-x: auto;
+  }
+
+  #cart table {
+    width: 100%;
+    table-layout: auto;
+  }
+
+  #cart table img {
+    width: 40px;
+  }
+
+  #cart table td:nth-child(1) {
+    width: 40px;
+  }
+  #cart table td:nth-child(2) {
+    width: 50px;
+  }
+  #cart table td:nth-child(3) {
+    width: 120px;
+  }
+
+  #cart table td {
+    font-size: 11px;
+    padding: 10px 2px;
+  }
+
+  #cart table td input {
+    width: 35px;
+    padding: 5px;
+    font-size: 11px;
+  }
+
+  #coupon,
+  #subtotal {
+    width: 100%;
+  }
+
+  #coupon input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  button.normal {
+    width: 100%;
+    padding: 10px;
+    font-size: 12px;
   }
 }

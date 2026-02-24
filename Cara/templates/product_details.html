@@ -1,8 +1,367 @@
-{% extends 'master.html' %} {% load static %}
+{% extends 'master.html' %}
 
-{% block title %}Cara | Shop{% endblock %}
+{% load static %}
+
+{% block title %}
+Cara | Shop
+{% endblock %}
 
 {% block content %}
-<h1>hicqecq</h1>
+
+<!-- product-details -->
+<section id="prod-details">
+  <div class="prod-images">
+    <img
+      src="{% static 'img/products/f1.jpg' %}"
+      alt="error loading image"
+      width="100%"
+      id="main"
+    />
+    <div class="small-img-group">
+      <div class="small-img">
+        <img
+          src="{% static 'img/products/f2.jpg' %}"
+          alt="error loading image"
+          width="100%"
+          class="s_img"
+        />
+      </div>
+      <div class="small-img">
+        <img
+          src="{% static 'img/products/f3.jpg' %}"
+          alt="error loading image"
+          width="100%"
+          class="s_img"
+        />
+      </div>
+      <div class="small-img">
+        <img
+          src="{% static 'img/products/f4.jpg' %}"
+          alt="error loading image"
+          width="100%"
+          class="s_img"
+        />
+      </div>
+      <div class="small-img">
+        <img
+          src="{% static 'img/products/f5.jpg' %}"
+          alt="error loading image"
+          width="100%"
+          class="s_img"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="prod-desc">
+    <h6>Home/T-Shirt</h6>
+    <h4>Men's Fashion T-Shirt</h4>
+    <h2>$139.00</h2>
+    <select>
+      <option>Select Size</option>
+      <option>XXL</option>
+      <option>XL</option>
+      <option>Large</option>
+      <option>Small</option>
+    </select>
+    <input type="number" value="1" /> <button>Add To Cart</button>
+    <h4>Product Details</h4>
+    <p>
+      The Gildan Ultra Cotton T-shirt is made from a substantial 6.0 oz. per sq.
+      yd. fabric constructed from 100% cotton, this classic fit preshrunk jersey
+      knit provides unmatched comfort with each wear. Featuring a taped neck and
+      shoulder, and a seamless double-needle collar, and available in a range of
+      colors, it offers it all in the ultimate head-turning package.
+    </p>
+  </div>
+</section>
+<!-- product-details -->
+
+<!-- featured products-->
+<section id="product1" class="product-details-section-p1">
+  <h2>Featured Products</h2>
+  <p>Summer Collection New Modern Design</p>
+  <div class="product-box">
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/f1.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Zara</span>
+        <h5>Floral Summer Shirt</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$78</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/f2.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Zara</span>
+        <h5>Tropical Casual Tee</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$103</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/f3.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>H&M</span>
+        <h5>Vintage Print Shirt</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$38</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/f4.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Zara</span>
+        <h5>Light Blossom Top</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$55</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/f5.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Zara</span>
+        <h5>Dark Blossom Top</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$55</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/f6.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Levi's</span>
+        <h5>Classic Denim Shirt</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$115</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/f7.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Adidas</span>
+        <h5>Linen Summer Pants</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$65</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/f8.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Outfitters</span>
+        <h5>Soft Pattern Kurti</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$30</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/n1.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Limelight</span>
+        <h5>Band Collar / Grandad Shirt</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$20</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/n2.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Limelight</span>
+        <h5>Gingham Check Shirt</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$35</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/n3.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Limelight</span>
+        <h5>White Oxford / Band Collar</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$88</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/n4.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Limelight</span>
+        <h5>Graphic Print Cuban Shirt</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$100</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/n5.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Gucci</span>
+        <h5>Chambray / Denim Shirt</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$250</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/n6.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Prada</span>
+        <h5>Striped Chino Shorts</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$167</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/n7.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Versace</span>
+        <h5>Overshirt / Shacket</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$300</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/n8.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Dior</span>
+        <h5>Short Sleeve Band Collar Shirt</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$135</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/n9.png' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Demin</span>
+        <h5>Demin Men's Jacket</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$500</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+  </div>
+</section>
+<!-- featured products-->
 
 {% endblock %}
