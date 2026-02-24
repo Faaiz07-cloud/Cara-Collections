@@ -34,7 +34,7 @@
           </li>
           <li>
             <a
-              class="{% if request.resolver_match.url_name == 'shop' %}active{% endif %}"
+              class="{% if request.resolver_match.url_name == 'shop' or request.resolver_match.url_name == 'product_details' %}active{% endif %}"
               href="{% url 'shop' %}"
               >Shop</a
             >

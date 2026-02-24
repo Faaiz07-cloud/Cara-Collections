@@ -1,5 +1,10 @@
-{% extends 'master.html' %} {% load static %} 
-{% block title %}Cara | Home{% endblock %}
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% block title %}
+Cara | Home
+{% endblock %}
 
 {% block content %}
 
@@ -26,5 +31,563 @@
   </div>
 </section>
 <!-- homepage -->
+
+<!-- features -->
+<section id="feature" class="section-p1">
+  <div class="feature-box">
+    <img src="{% static 'img/features/f1.png' %}" alt="error loading image" />
+    <h6>Free Shipping</h6>
+  </div>
+
+  <div class="feature-box">
+    <img src="{% static 'img/features/f2.png' %}" alt="error loading image" />
+    <h6>Online Order</h6>
+  </div>
+
+  <div class="feature-box">
+    <img src="{% static 'img/features/f3.png' %}" alt="error loading image" />
+    <h6>Save Money</h6>
+  </div>
+
+  <div class="feature-box">
+    <img src="{% static 'img/features/f4.png' %}" alt="error loading image" />
+    <h6>Promotions</h6>
+  </div>
+
+  <div class="feature-box">
+    <img src="{% static 'img/features/f5.png' %}" alt="error loading image" />
+    <h6>Happy Sell</h6>
+  </div>
+
+  <div class="feature-box">
+    <img src="{% static 'img/features/f6.png' %}" alt="error loading image" />
+    <h6>24/7 Support</h6>
+  </div>
+</section>
+<!-- features -->
+
+<!-- products -->
+<section id="product1" class="product-section-p1">
+  <h2>Featured Products</h2>
+  <p>Summer Collection New Modern Design</p>
+  <div class="product-box">
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/f1.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Zara</span>
+        <h5>Floral Summer Shirt</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$78</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/f2.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Zara</span>
+        <h5>Tropical Casual Tee</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$103</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/f3.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>H&M</span>
+        <h5>Vintage Print Shirt</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$38</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/f4.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Zara</span>
+        <h5>Light Blossom Top</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$55</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/f5.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Zara</span>
+        <h5>Dark Blossom Top</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$55</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/f6.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Levi's</span>
+        <h5>Classic Denim Shirt</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$115</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/f7.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Adidas</span>
+        <h5>Linen Summer Pants</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$65</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/f8.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Outfitters</span>
+        <h5>Soft Pattern Kurti</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$30</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/n1.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Limelight</span>
+        <h5>Band Collar / Grandad Shirt</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$20</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/n2.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Limelight</span>
+        <h5>Gingham Check Shirt</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$35</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/n3.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Limelight</span>
+        <h5>White Oxford / Band Collar</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$88</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/n4.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Limelight</span>
+        <h5>Graphic Print Cuban Shirt</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$100</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/n5.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Gucci</span>
+        <h5>Chambray / Denim Shirt</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$250</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/n6.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Prada</span>
+        <h5>Striped Chino Shorts</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$167</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/n7.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Versace</span>
+        <h5>Overshirt / Shacket</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$300</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/n8.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Dior</span>
+        <h5>Short Sleeve Band Collar Shirt</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$135</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/n9.png' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Demin</span>
+        <h5>Demin Men's Jacket</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$500</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+  </div>
+</section>
+<!-- products -->
+
+<!-- categories -->
+<section id="categories" class="section-p1 cat-margin">
+  <h2>Shop by Category</h2>
+  <p>Find your favorite products by category</p>
+  <div class="category-row">
+    <div class="category-box">
+      <img src="{% static 'img/categories/m.jpg' %}" alt="men" />
+      <h5>Men</h5>
+      <button class="category-btn" data-url="{% url 'shop' %}">Shop Now</button>
+    </div>
+    <div class="category-box">
+      <img src="{% static 'img/categories/w.jpg' %}" alt="women" />
+      <h5>Women</h5>
+      <button class="category-btn" data-url="{% url 'shop' %}">Shop Now</button>
+    </div>
+    <div class="category-box">
+      <img src="{% static 'img/categories/k.jpg' %}" alt="kids" />
+      <h5>Kids</h5>
+      <button class="category-btn" data-url="{% url 'shop' %}">Shop Now</button>
+    </div>
+    <div class="category-box">
+      <img src="{% static 'img/categories/a.jpg' %}" alt="accessories" />
+      <h5>Accessories</h5>
+      <button class="category-btn" data-url="{% url 'shop' %}">Shop Now</button>
+    </div>
+    <div class="category-box">
+      <img src="{% static 'img/categories/s.jpg' %}" alt="sports wear" />
+      <h5>SportsWear</h5>
+      <button class="category-btn" data-url="{% url 'shop' %}">Shop Now</button>
+    </div>
+  </div>
+</section>
+<!-- categories -->
+
+<!-- banner -->
+<section id="banner" class="section-m1">
+  <img src="{% static 'img/banner/b2.jpg' %}" alt="Repair Services Banner" />
+  <div class="banner-content">
+    <h4>Repair Services</h4>
+    <h2>Up to <span>70% Off</span> - All T-Shirts & Accessories</h2>
+    <button>Explore More</button>
+  </div>
+</section>
+<!-- banner -->
+
+<!-- new arrivals -->
+<section id="product1" class="section-p1">
+  <h2>New Arrivals</h2>
+  <p class="new">Hot off the shelves ready for you</p>
+  <div class="product-box">
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/i1.jpg' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Puma</span>
+        <h5>Casual Button-up Shirt</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$102</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/i2.png' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Jordan</span>
+        <h5>Jordan Sneakers</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$700</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/i3.png' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Lamba</span>
+        <h5>Longcaot Lamba</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$32</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/i4.png' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Nike</span>
+        <h5>White Sneakers</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$67</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/i5.png' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Zara</span>
+        <h5>Athletic Shoes</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$55</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/i6.png' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Nike</span>
+        <h5>Pink Sneakers Air Force 1</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$900</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/i7.png' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Outfitters</span>
+        <h5>Leather Belt</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$90</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{% static 'img/products/i8.png' %}" alt="error image loading" />
+      <div class="desc">
+        <span>Outfitters</span>
+        <h5>High Fashion Heels</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>$30</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+  </div>
+</section>
+<!-- new arrivals -->
+
+<!-- banner-2 -->
+<section id="sm-banner" class="banner-2-section-p1">
+  <div class="banner-1">
+    <img src="{% static 'img/banner/b17.jpg' %}" alt="Crazy Deals" />
+    <div class="banner-content">
+      <h4>Crazy Deals</h4>
+      <h2>Buy 1 Get 1 Free</h2>
+      <span>The Best Classic Dress is on sale at Cara</span>
+      <button>Learn More</button>
+    </div>
+  </div>
+
+  <div class="banner-1">
+    <img src="{% static 'img/banner/b10.jpg' %}" alt="Spring/Summer" />
+    <div class="banner-content">
+      <h4>Spring/Summer</h4>
+      <h2>Upcoming Season</h2>
+      <span>The Best Classic Dress is on sale at Cara</span>
+      <button>Collection</button>
+    </div>
+  </div>
+</section>
+<!-- banner-2 -->
+
+<!-- banner-3 -->
+<section id="banner-3">
+  <div class="banner-1">
+    <img src="{% static 'img/banner/b7.jpg' %}" alt="Seasonal Sale" />
+    <div class="banner-content">
+      <h2>SEASONAL SALE</h2>
+      <h3>Winter Collection -50% OFF</h3>
+    </div>
+  </div>
+
+  <div class="banner-1">
+    <img src="{% static 'img/banner/b4.jpg' %}" alt="New Footwear Collection" />
+    <div class="banner-content">
+      <h2>NEW FOOTWEAR COLLECTION</h2>
+      <h3>Spring/Summer 2022</h3>
+    </div>
+  </div>
+
+  <div class="banner-1">
+    <img src="{% static 'img/banner/b16.jpg' %}" alt="T-Shirts" />
+    <div class="banner-content">
+      <h2>T-SHIRTS</h2>
+      <h3>New Trendy Prints</h3>
+    </div>
+  </div>
+</section>
+<!-- banner-3 -->
 
 {% endblock %}

@@ -27,7 +27,8 @@ const product_card = document.querySelectorAll(".prod");
 if (product_card) {
   product_card.forEach((card) => {
     card.addEventListener("click", () => {
-      window.location.href = "product_details.html";
+      const url = card.getAttribute("data-url");
+      window.location.href = url;
     });
   });
 }
@@ -37,7 +38,8 @@ const category_btn = document.querySelectorAll(".category-btn");
 if (category_btn) {
   category_btn.forEach((btn) => {
     btn.addEventListener("click", () => {
-      window.location.href = "shop.html";
+      const url = btn.getAttribute("data-url");
+      window.location.href = url;
     });
   });
 }

@@ -1,3 +1,124 @@
-{% extends 'master.html' %} {% load static %}
+{% extends 'master.html' %}
 
-{% block title %}Cara | Cart{% endblock %}
+{% load static %}
+
+{% block title %}
+Cara | Cart
+{% endblock %} 
+
+{% block content %}
+
+<!-- homepage -->
+<section id="about-page-header">
+  <img
+    src="{% static 'img/about/banner.png' %}"
+    alt="About Banner"
+    class="about-header-img"
+  />
+
+  <div class="about-header-content">
+    <h2>#Cart</h2>
+    <p>Add your coupon code & SAVE up to 70%!</p>
+  </div>
+</section>
+<!-- homepage -->
+
+<!-- cart -->
+<section id="cart" class="cart-section-p1">
+  <table width="100%">
+    <thead>
+      <tr>
+        <td>Remove</td>
+        <td>Image</td>
+        <td>Product</td>
+        <td>Price</td>
+        <td>Quantity</td>
+        <td>Subtotal</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <a href="#"><i class="far fa-times-circle"></i></a>
+        </td>
+        <td><img src="{% static 'img/products/f1.jpg' %}" alt="" /></td>
+        <td>Cartoon Astronaut T-Shirts</td>
+        <td>$118.19</td>
+        <td><input type="number" value="1" /></td>
+        <td>$118.19</td>
+      </tr>
+      <tr>
+        <td>
+          <a href="#"><i class="far fa-times-circle"></i></a>
+        </td>
+        <td><img src="{% static 'img/products/f2.jpg' %}" alt="" /></td>
+        <td>Designer Floral Shirt</td>
+        <td>$150.00</td>
+        <td><input type="number" value="1" /></td>
+        <td>$150.00</td>
+      </tr>
+      <tr>
+        <td>
+          <a href="#"><i class="far fa-times-circle"></i></a>
+        </td>
+        <td><img src="{% static 'img/products/i7.png' %}" alt="" /></td>
+        <td>Pure Leather Belt</td>
+        <td>$120.00</td>
+        <td><input type="number" value="1" /></td>
+        <td>$120.00</td>
+      </tr>
+      <tr>
+        <td>
+          <a href="#"><i class="far fa-times-circle"></i></a>
+        </td>
+        <td><img src="{% static 'img/products/i4.png' %}" alt="" /></td>
+        <td>Air Force 1</td>
+        <td>$349.00</td>
+        <td><input type="number" value="1" /></td>
+        <td>$349.00</td>
+      </tr>
+      <tr>
+        <td>
+          <a href="#"><i class="far fa-times-circle"></i></a>
+        </td>
+        <td><img src="{% static 'img/products/i3.png' %}" alt="" /></td>
+        <td>Long Warm Coat</td>
+        <td>$220.00</td>
+        <td><input type="number" value="1" /></td>
+        <td>$220.00</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="cart-add" class="cart-section-p2">
+  <div id="coupon">
+    <h3>Apply Coupon</h3>
+    <div>
+      <input type="text" placeholder="Enter Your Coupon" />
+      <button class="normal">Apply</button>
+    </div>
+  </div>
+
+  <div id="subtotal">
+    <h3>Cart Totals</h3>
+    <table>
+      <tr>
+        <td>Cart Subtotal</td>
+        <td>$ 268.19</td>
+      </tr>
+      <tr>
+        <td>Shipping</td>
+        <td>Free</td>
+      </tr>
+      <tr>
+        <td><strong>Total</strong></td>
+        <td><strong>$ 268.19</strong></td>
+      </tr>
+    </table>
+    <button class="normal">Proceed to checkout</button>
+  </div>
+</section>
+<!-- cart -->
+
+{% endblock %}

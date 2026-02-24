@@ -1,3 +1,90 @@
-{% extends 'master.html' %} {% load static %}
+{% extends 'master.html' %}
 
-{% block title %}Cara | About Us{% endblock %}
+{% load static %}
+
+{% block title %}
+Cara | About Us
+{% endblock %}
+
+{% block content %}
+
+<!-- homepage -->
+<section id="about-page-header">
+  <img
+    src="{% static 'img/about/banner.png' %}"
+    alt="About Banner"
+    class="about-header-img"
+  />
+
+  <div class="about-header-content">
+    <h2>#AboutUs</h2>
+    <p>Cara Clothing — where modern style meets everyday confidence.</p>
+  </div>
+</section>
+<!-- homepage -->
+
+<!-- about -->
+<section id="about">
+  <img src="{% static 'img/about/a6.jpg' %}" alt="" />
+  <div class="about-details">
+    <h2>Why Choose Us!</h2>
+    <p>
+      Cara is your all-season fashion destination, designed for those who value
+      quality, style, and reliability. From everyday essentials to seasonal
+      trends, we offer carefully curated clothing that blends comfort with
+      modern design. Our collections are crafted to suit every lifestyle,
+      ensuring you look confident in every season. With premium fabrics,
+      affordable pricing, and a seamless shopping experience, Cara makes fashion
+      simple, accessible, and trustworthy.
+    </p>
+  </div>
+</section>
+<!-- about -->
+
+<!--video-->
+<section id="about-video" class="section-p1">
+  <h1>
+    Downlaod Our
+    <a href="https://play.google.com/store/games?hl=en&pli=1">App</a>
+  </h1>
+  <div class="video">
+    <video src="{% static 'img/about/1.mp4' %}"></video>
+  </div>
+</section>
+<!--video-->
+
+<!-- features -->
+<section id="feature" class="section-p1">
+  <div class="feature-box">
+    <img src="{% static 'img/features/f1.png' %}" alt="error loading image" />
+    <h6>Free Shipping</h6>
+  </div>
+
+  <div class="feature-box">
+    <img src="{% static 'img/features/f2.png' %}" alt="error loading image" />
+    <h6>Online Order</h6>
+  </div>
+
+  <div class="feature-box">
+    <img src="{% static 'img/features/f3.png' %}" alt="error loading image" />
+    <h6>Save Money</h6>
+  </div>
+
+  <div class="feature-box">
+    <img src="{% static 'img/features/f4.png' %}" alt="error loading image" />
+    <h6>Promotions</h6>
+  </div>
+
+  <div class="feature-box">
+    <img src="{% static 'img/features/f5.png' %}" alt="error loading image" />
+    <h6>Happy Sell</h6>
+  </div>
+
+  <div class="feature-box">
+    <img src="{% static 'img/features/f6.png' %}" alt="error loading image" />
+    <h6>24/7 Support</h6>
+  </div>
+</section>
+<!-- features -->
+
+{% endblock %}
