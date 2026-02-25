@@ -33,17 +33,6 @@ if (product_card) {
   });
 }
 
-const category_btn = document.querySelectorAll(".category-btn");
-
-if (category_btn) {
-  category_btn.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const url = btn.getAttribute("data-url");
-      window.location.href = url;
-    });
-  });
-}
-
 var main_image = document.getElementById("main");
 var small_image = document.getElementsByClassName("s_img");
 
