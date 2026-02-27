@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from app.models import Category, SubCategory, Product, ProductImage
+from app.models import Category, SubCategory, Product, ProductImage, NewArrivalProduct, NewArrivalProductImage
 
 def Master(request):
     return render(request,'master.html')
@@ -8,9 +8,11 @@ def Master(request):
 def Index(request):
     categories = Category.objects.all()
     products = Product.objects.all()
+    new_arrival_products = NewArrivalProduct.objects.all()
     context = {
         'categories': categories,
-        'products': products
+        'products': products,
+        'new_arrival_products': new_arrival_products
     }
     return render(request,'index.html', context)    
 
