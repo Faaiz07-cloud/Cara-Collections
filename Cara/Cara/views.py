@@ -1,10 +1,16 @@
 from django.shortcuts import render
 
+from app.models import Category, SubCategory
+
 def Master(request):
     return render(request,'master.html')
 
 def Index(request):
-    return render(request,'index.html')    
+    categories = Category.objects.all()
+    context = {
+        'categories': categories
+    }
+    return render(request,'index.html', context)    
 
 def Shop(request):
     return render(request,'shop.html')   

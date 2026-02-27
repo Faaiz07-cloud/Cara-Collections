@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %}
+{% block title %} 
 Cara | Home
 {% endblock %}
 
@@ -355,35 +355,21 @@ Cara | Home
 <!-- products -->
 
 <!-- categories -->
-<section id="categories" class="section-p1 cat-margin">
+<section id="categories" class="category-section">
   <h2>Shop by Category</h2>
-  <p>Find your favorite products by category</p>
-  <div class="category-row">
+  <p>Shop your style, your way!</p>
+  <div class="categories-container">
+    {% for category in categories %}
     <div class="category-box">
-      <img src="{% static 'img/categories/m.jpg' %}" alt="men" />
-      <h5>Men</h5>
-      <button class="category-btn" data-url="{% url 'shop' %}">Shop Now</button>
+      <img src="{{ category.image.url }}" alt="{{ category.name }} Category" />
+      <h3>{{ category.name }}</h3>
+      <ul class="subcategory-list">
+        {% for subcategory in category.subcategories.all %}
+        <li><a href="">{{ subcategory.name }}</a></li>
+        {% endfor %}
+      </ul>
     </div>
-    <div class="category-box">
-      <img src="{% static 'img/categories/w.jpg' %}" alt="women" />
-      <h5>Women</h5>
-      <button class="category-btn" data-url="{% url 'shop' %}">Shop Now</button>
-    </div>
-    <div class="category-box">
-      <img src="{% static 'img/categories/k.jpg' %}" alt="kids" />
-      <h5>Kids</h5>
-      <button class="category-btn" data-url="{% url 'shop' %}">Shop Now</button>
-    </div>
-    <div class="category-box">
-      <img src="{% static 'img/categories/a.jpg' %}" alt="accessories" />
-      <h5>Accessories</h5>
-      <button class="category-btn" data-url="{% url 'shop' %}">Shop Now</button>
-    </div>
-    <div class="category-box">
-      <img src="{% static 'img/categories/s.jpg' %}" alt="sports wear" />
-      <h5>SportsWear</h5>
-      <button class="category-btn" data-url="{% url 'shop' %}">Shop Now</button>
-    </div>
+    {% endfor %}
   </div>
 </section>
 <!-- categories -->

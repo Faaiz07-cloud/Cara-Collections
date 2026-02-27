@@ -33,17 +33,6 @@ if (product_card) {
   });
 }
 
-const category_btn = document.querySelectorAll(".category-btn");
-
-if (category_btn) {
-  category_btn.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const url = btn.getAttribute("data-url");
-      window.location.href = url;
-    });
-  });
-}
-
 var main_image = document.getElementById("main");
 var small_image = document.getElementsByClassName("s_img");
 
@@ -95,7 +84,7 @@ video.addEventListener("click", () => {
   }
 });
 
-// Auto play when in viewport (UX feature)
+// Auto play when in viewport
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if(entry.isIntersecting){
@@ -107,3 +96,4 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.6 });
 
 observer.observe(video);
+// ---------------------------------------
