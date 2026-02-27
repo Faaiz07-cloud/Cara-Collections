@@ -30,4 +30,21 @@ class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images') 
 
     def __str__(self):
-        return f"Image for {self.product.name}"           
+        return f"Image for {self.product.name}"    
+
+
+class NewArrivalProduct(models.Model):  
+    name = models.CharField(max_length=200)
+    brand = models.CharField(max_length=100)
+    price = models.DecimalField(max_digits=10, decimal_places=2) 
+    rating = models.PositiveSmallIntegerField(default=0) 
+
+    def __str__(self):
+        return self.name
+
+class NewArrivalProductImage(models.Model):
+    image = models.ImageField(upload_to='new_arrivals/')
+    new_arrival_product = models.ForeignKey(NewArrivalProduct, on_delete=models.CASCADE, related_name='new_arrival_images') 
+
+    def __str__(self):
+        return f"Image for {self.new_arrival_product.name}"     
