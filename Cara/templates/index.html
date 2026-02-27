@@ -2,9 +2,9 @@
 
 {% load static %}
 
-{% block title %}
+{% block title %} 
 Cara | Home
-{% endblock %}
+{% endblock %} 
 
 {% block content %}
 
@@ -131,136 +131,26 @@ Cara | Home
   <h2>New Arrivals</h2>
   <p class="new">Hot off the shelves ready for you</p>
   <div class="product-box">
+    {% for new_arrivals in new_arrival_products %}
     <div class="prod" data-url="{% url 'product_details' %}">
-      <img src="{% static 'img/products/i1.jpg' %}" alt="error image loading" />
+      {% for image in new_arrivals.new_arrival_images.all %}
+      <img src="{{ image.image.url }}" alt="error image loading" />
+      {% endfor %}
       <div class="desc">
-        <span>Puma</span>
-        <h5>Casual Button-up Shirt</h5>
+        <span>{{ new_arrivals.brand }}</span>
+        <h5>{{ new_arrivals.name }}</h5>
         <div class="rating">
+          {% for i in "12345" %} {% if forloop.counter <= new_arrivals.rating %}
           <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
+          {% else %}
+          <i class="far fa-star"></i>
+          {% endif %} {% endfor %}
         </div>
-        <h4>$102</h4>
+        <h4>${{ new_arrivals.price }}</h4>
       </div>
       <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
     </div>
-
-    <div class="prod" data-url="{% url 'product_details' %}">
-      <img src="{% static 'img/products/i2.png' %}" alt="error image loading" />
-      <div class="desc">
-        <span>Jordan</span>
-        <h5>Jordan Sneakers</h5>
-        <div class="rating">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <h4>$700</h4>
-      </div>
-      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-    </div>
-
-    <div class="prod" data-url="{% url 'product_details' %}">
-      <img src="{% static 'img/products/i3.png' %}" alt="error image loading" />
-      <div class="desc">
-        <span>Lamba</span>
-        <h5>Longcaot Lamba</h5>
-        <div class="rating">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <h4>$32</h4>
-      </div>
-      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-    </div>
-
-    <div class="prod" data-url="{% url 'product_details' %}">
-      <img src="{% static 'img/products/i4.png' %}" alt="error image loading" />
-      <div class="desc">
-        <span>Nike</span>
-        <h5>White Sneakers</h5>
-        <div class="rating">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <h4>$67</h4>
-      </div>
-      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-    </div>
-
-    <div class="prod" data-url="{% url 'product_details' %}">
-      <img src="{% static 'img/products/i5.png' %}" alt="error image loading" />
-      <div class="desc">
-        <span>Zara</span>
-        <h5>Athletic Shoes</h5>
-        <div class="rating">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <h4>$55</h4>
-      </div>
-      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-    </div>
-
-    <div class="prod" data-url="{% url 'product_details' %}">
-      <img src="{% static 'img/products/i6.png' %}" alt="error image loading" />
-      <div class="desc">
-        <span>Nike</span>
-        <h5>Pink Sneakers Air Force 1</h5>
-        <div class="rating">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <h4>$900</h4>
-      </div>
-      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-    </div>
-
-    <div class="prod" data-url="{% url 'product_details' %}">
-      <img src="{% static 'img/products/i7.png' %}" alt="error image loading" />
-      <div class="desc">
-        <span>Outfitters</span>
-        <h5>Leather Belt</h5>
-        <div class="rating">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <h4>$90</h4>
-      </div>
-      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-    </div>
-
-    <div class="prod" data-url="{% url 'product_details' %}">
-      <img src="{% static 'img/products/i8.png' %}" alt="error image loading" />
-      <div class="desc">
-        <span>Outfitters</span>
-        <h5>High Fashion Heels</h5>
-        <div class="rating">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <h4>$30</h4>
-      </div>
-      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-    </div>
+    {% endfor %}
   </div>
 </section>
 <!-- new arrivals -->
