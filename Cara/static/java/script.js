@@ -84,7 +84,7 @@ video.addEventListener("click", () => {
   }
 });
 
-// Auto play when in viewport (UX feature)
+// Auto play when in viewport
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if(entry.isIntersecting){
@@ -96,3 +96,4 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.6 });
 
 observer.observe(video);
+// ---------------------------------------
