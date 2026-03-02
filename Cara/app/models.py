@@ -25,6 +25,10 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def images_list(self):
+        return self.images.all()    
+
 class ProductImage(models.Model):
     image = models.ImageField(upload_to='products/')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images') 
@@ -41,6 +45,10 @@ class NewArrivalProduct(models.Model):
 
     def __str__(self):
         return self.name
+
+    @property
+    def images_list(self):
+        return self.new_arrival_images.all()    
 
 class NewArrivalProductImage(models.Model):
     image = models.ImageField(upload_to='new_arrivals/')

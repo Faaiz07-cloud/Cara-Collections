@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from itertools import chain
 
 from app.models import Category, SubCategory, Product, ProductImage, NewArrivalProduct, NewArrivalProductImage
 
@@ -17,7 +18,14 @@ def Index(request):
     return render(request,'index.html', context)    
 
 def Shop(request):
-    return render(request,'shop.html')   
+    featured_products = Product.objects.all()
+    new_arrival_products = NewArrivalProduct.objects.all()
+
+    all_products = list(chain(featured_products, new_arrival_products))
+    context = {
+        'all_products': all_products
+    }
+    return render(request,'shop.html', context)   
 
 def About(request):
     return render(request,'about.html')
