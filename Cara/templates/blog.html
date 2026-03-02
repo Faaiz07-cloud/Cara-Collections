@@ -25,90 +25,20 @@ Cara | Blog
 
 <!-- blog -->
 <section id="blog">
+  {% for banner in banners %}
   <div class="blog-box">
     <div class="blog-img">
-      <img src="{% static 'img/blog/b1.jpg' %}" alt="" />
+      <img src="{{ banner.banner_img.url }}" alt="{{ banner.banner_title }}" />
     </div>
 
     <div class="blog-details">
-      <h4>Urban Street Zip Hoodie</h4>
-      <p>
-        Skate culture se inspired minimal zip-up hoodie — soft cotton-jersey
-        fabric ke sath all-day comfort. Clean design, solid colors, aur
-        breathable texture jo daily wear ke liye perfect hai.
-      </p>
+      <h4>{{ banner.banner_title }}</h4>
+      <p>{{ banner.banner_desc }}</p>
       <a href="">CONTINUE READING</a>
     </div>
-    <h1>13/07</h1>
+    <h1>{{ banner.banner_no }}</h1>
   </div>
-
-  <div class="blog-box">
-    <div class="blog-img">
-      <img src="{% static 'img/blog/b2.jpg' %}" alt="" />
-    </div>
-
-    <div class="blog-details">
-      <h4>Classic Everyday Hoodie</h4>
-      <p>
-        Simple, timeless aur functional design ke sath zip-up hoodie jo har
-        outfit ke sath match ho jati hai. Lightweight cotton jersey material aur
-        smooth zip finishing ke sath casual aur smart look.
-      </p>
-      <a href="">CONTINUE READING</a>
-    </div>
-    <h1>12/03</h1>
-  </div>
-
-  <div class="blog-box">
-    <div class="blog-img">
-      <img src="{% static 'img/blog/b3.jpg' %}" alt="" />
-    </div>
-
-    <div class="blog-details">
-      <h4>Premium Comfort Zip Hoodie</h4>
-      <p>
-        High-quality cotton blend se bana hua hoodie jo warmth aur softness dono
-        provide karta hai. Modern fit, strong stitching, aur durable zip ke sath
-        long-term use ke liye perfect.
-      </p>
-      <a href="">CONTINUE READING</a>
-    </div>
-    <h1>15/06</h1>
-  </div>
-
-  <div class="blog-box">
-    <div class="blog-img">
-      <img src="{% static 'img/blog/b4.jpg' %}" alt="" />
-    </div>
-
-    <div class="blog-details">
-      <h4>Minimal Aesthetic Hoodie</h4>
-      <p>
-        Clean lines aur neutral tones ke sath stylish zip-up hoodie. Soft-touch
-        fabric aur relaxed fit jo urban fashion aur comfort ko perfectly balance
-        karta hai.
-      </p>
-      <a href="">CONTINUE READING</a>
-    </div>
-    <h1>11/05</h1>
-  </div>
-
-  <div class="blog-box">
-    <div class="blog-img">
-      <img src="{% static 'img/blog/b6.jpg' %}" alt="" />
-    </div>
-
-    <div class="blog-details">
-      <h4>Active Lifestyle Zip Hoodie</h4>
-      <p>
-        Movement aur flexibility ko focus karke design kiya gaya hoodie —
-        breathable cotton jersey, smooth zip system aur lightweight feel jo
-        workout aur casual dono ke liye suitable hai.
-      </p>
-      <a href="">CONTINUE READING</a>
-    </div>
-    <h1>21/07</h1>
-  </div>
+  {% endfor %}
 </section>
 <!-- blog -->
 

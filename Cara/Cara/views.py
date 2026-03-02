@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from itertools import chain
 
-from app.models import Category, SubCategory, Product, ProductImage, NewArrivalProduct, NewArrivalProductImage
+from app.models import Category, SubCategory, Product, ProductImage, NewArrivalProduct, NewArrivalProductImage, banner
 
 def Master(request):
     return render(request,'master.html')
@@ -34,7 +34,11 @@ def Contact(request):
     return render(request,'contact.html')
 
 def Blog(request):
-    return render(request,'blog.html')
+    banners = banner.objects.filter(is_active=True)
+    context = {
+        'banners' : banners
+    }
+    return render(request,'blog.html', context)
 
 def Cart(request):
     return render(request,'cart.html')
