@@ -55,4 +55,16 @@ class NewArrivalProductImage(models.Model):
     new_arrival_product = models.ForeignKey(NewArrivalProduct, on_delete=models.CASCADE, related_name='new_arrival_images') 
 
     def __str__(self):
-        return f"Image for {self.new_arrival_product.name}"     
+        return f"Image for {self.new_arrival_product.name}"   
+
+
+class banner(models.Model):
+    banner_no = models.CharField(max_length=50)
+    banner_img = models.ImageField(upload_to='banners/')   
+    banner_title = models.CharField(max_length=200)
+    banner_desc = models.TextField()
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.banner_no        
