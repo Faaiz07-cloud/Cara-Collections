@@ -30,6 +30,7 @@ urlpatterns = [
     path('blog/', views.Blog, name='blog'),
     path('cart/', views.Cart, name='cart'),
     path('product_d/', views.ProductDetails, name='product_details'),
+    path('prod_by_category/<int:pk>/', views.Product_By_Category, name='Product_By_Category')
 ]
 
 if settings.DEBUG:
