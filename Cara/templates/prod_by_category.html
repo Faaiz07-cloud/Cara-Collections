@@ -1,10 +1,10 @@
 {% extends 'master.html' %}
 
-{% load static %} 
+{% load static %}
 
 {% block title %}
-Cara | Shop
-{% endblock %}
+{{ sub_category.name }}
+{% endblock %} 
 
 {% block content %}
 
@@ -23,13 +23,14 @@ Cara | Shop
 </section>
 <!-- homepage -->
 
-<!-- products -->
+<!-- products_by_category -->
 <section id="product1" class="product-section-p1 section-margin">
-  <h2 class="latest-coll">All Collections</h2>
-  <div class="product-box" >
-    {% for product in all_products %}
-    <div class="prod" data-url="{% url 'product_details' %}"s>
-       <img src="{{ product.p_img.url }}" alt="{{ product.p_name }}" />
+  <h2>{{ sub_category.name }}</h2>
+  <p>Summer Collection New Modern Design</p>
+  <div class="product-box">
+    {% for product in products %}
+    <div class="prod" data-url="{% url 'product_details' %}">
+      <img src="{{ product.p_img.url }}" alt="{{ product.p_name }}" />
       <div class="desc">
         <span>{{ product.p_brand }}</span>
         <h5>{{ product.p_name }}</h5>
@@ -47,7 +48,7 @@ Cara | Shop
     {% endfor %}
   </div>
 </section>
-<!-- products -->
+<!-- products_by-category -->
 
 <!-- pagination -->
 <section id="pagination">

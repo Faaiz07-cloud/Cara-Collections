@@ -66,34 +66,32 @@ Cara | Home
 </section>
 <!-- features -->
 
-<!-- products -->
+<!-- featured products -->
 <section id="product1" class="product-section-p1">
   <h2>Featured Products</h2>
   <p>Summer Collection New Modern Design</p>
   <div class="product-box">
-    {% for product in products %}
+    {% for product in featured_inventory %}
     <div class="prod" data-url="{% url 'product_details' %}">
-      {% for image in product.images.all %}
-      <img src="{{ image.image.url }}" alt="error image loading" />
-      {% endfor %}
+      <img src="{{ product.p_img.url }}" alt="{{ product.p_name }}" />
       <div class="desc">
-        <span>{{ product.brand }}</span>
-        <h5>{{ product.name }}</h5>
+        <span>{{ product.p_brand }}</span>
+        <h5>{{ product.p_name }}</h5>
         <div class="rating">
-          {% for i in "12345" %} {% if forloop.counter <= product.rating %}
+          {% for i in "12345" %} {% if forloop.counter <= product.p_rating %}
           <i class="fas fa-star"></i>
           {% else %}
           <i class="far fa-star"></i>
           {% endif %} {% endfor %}
         </div>
-        <h4>${{ product.price }}</h4>
+        <h4>${{ product.p_price }}</h4>
       </div>
       <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
     </div>
     {% endfor %}
   </div>
 </section>
-<!-- products -->
+<!-- featured products -->
 
 <!-- categories -->
 <section id="categories" class="category-section">
@@ -106,7 +104,7 @@ Cara | Home
       <h3>{{ category.name }}</h3>
       <ul class="subcategory-list">
         {% for subcategory in category.subcategories.all %}
-        <li><a href="">{{ subcategory.name }}</a></li>
+        <li><a href="{% url 'Product_By_Category' subcategory.id %}">{{ subcategory.name }}</a></li>
         {% endfor %}
       </ul>
     </div>
@@ -131,22 +129,20 @@ Cara | Home
   <h2>New Arrivals</h2>
   <p class="new">Hot off the shelves ready for you</p>
   <div class="product-box">
-    {% for new_arrivals in new_arrival_products %}
+    {% for product in new_arrivals_inventory %}
     <div class="prod" data-url="{% url 'product_details' %}">
-      {% for image in new_arrivals.new_arrival_images.all %}
-      <img src="{{ image.image.url }}" alt="error image loading" />
-      {% endfor %}
+      <img src="{{ product.p_img.url }}" alt="{{product.p_name}}" />
       <div class="desc">
-        <span>{{ new_arrivals.brand }}</span>
-        <h5>{{ new_arrivals.name }}</h5>
+        <span>{{ product.p_brand }}</span>
+        <h5>{{ product.p_name }}</h5>
         <div class="rating">
-          {% for i in "12345" %} {% if forloop.counter <= new_arrivals.rating %}
+          {% for i in "12345" %} {% if forloop.counter <= product.p_rating %}
           <i class="fas fa-star"></i>
           {% else %}
           <i class="far fa-star"></i>
           {% endif %} {% endfor %}
         </div>
-        <h4>${{ new_arrivals.price }}</h4>
+        <h4>${{ product.p_price }}</h4>
       </div>
       <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
     </div>
