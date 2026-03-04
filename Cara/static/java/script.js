@@ -22,47 +22,20 @@ if (btn_1001) {
   });
 }
 
-const product_card = document.querySelectorAll(".prod");
-
-if (product_card) {
-  product_card.forEach((card) => {
-    card.addEventListener("click", () => {
-      const url = card.getAttribute("data-url");
-      window.location.href = url;
+const products = document.querySelectorAll(".prod");
+if (products.length > 0) {  // check NodeList is not empty
+  products.forEach(product => {
+    product.addEventListener('click', () => {
+      const url = product.getAttribute("data-url");
+      if (url) {  // extra safety check
+        window.location.href = url;
+      }
     });
   });
 }
 
 var main_image = document.getElementById("main");
 var small_image = document.getElementsByClassName("s_img");
-
-/*
-small_image[0].onclick = function(){
-    let temp = main_image.src;
-    main_image.src = small_image[0].src;
-    small_image[0].src = temp;
-}
-
-small_image[1].onclick = function(){
-    let temp = main_image.src;
-    main_image.src = small_image[1].src;
-    small_image[1].src = temp;
-}
-
-small_image[2].onclick = function(){
-    let temp = main_image.src;
-    main_image.src = small_image[2].src;
-    small_image[2].src = temp;
-}
-
-small_image[3].onclick = function(){
-    let temp = main_image.src;
-    main_image.src = small_image[3].src;
-    small_image[3].src = temp;
-}
-*/
-
-//using loop
 
 for (let i = 0; i < small_image.length; i++) {
   small_image[i].onclick = function () {

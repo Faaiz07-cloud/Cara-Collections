@@ -26,6 +26,7 @@ class Inventory(models.Model):
     p_brand = models.CharField(max_length=100)
     p_price = models.DecimalField(max_digits=10, decimal_places=2) 
     p_rating = models.PositiveSmallIntegerField(default=0)
+    p_desc = models.TextField(null=True, blank=True)
     
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -36,6 +37,13 @@ class Inventory(models.Model):
 
     def __str__(self):
         return self.p_name
+    
+class ProductGallery(models.Model):
+    prod_gallery = models.ImageField(upload_to='prod_gallery/', null=True, blank=True)    
+    inventory = models.ForeignKey(Inventory, on_delete=models.CASCADE, related_name='prod_gallery')
+    
+    def __str__(self):
+        return f"{self.inventory.p_name} - {self.prod_gallery}"
 
 class banner(models.Model):
     banner_no = models.CharField(max_length=50)

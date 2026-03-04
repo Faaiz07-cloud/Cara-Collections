@@ -28,7 +28,7 @@ Cara | Shop
   <h2 class="latest-coll">All Collections</h2>
   <div class="product-box" >
     {% for product in all_products %}
-    <div class="prod" data-url="{% url 'product_details' %}"s>
+    <div class="prod" data-url="{% url 'product_details' product.id %}"s>
        <img src="{{ product.p_img.url }}" alt="{{ product.p_name }}" />
       <div class="desc">
         <span>{{ product.p_brand }}</span>

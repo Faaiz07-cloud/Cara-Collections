@@ -43,8 +43,15 @@ def Blog(request):
 def Cart(request):
     return render(request,'cart.html')
 
-def ProductDetails(request):
-    return render(request,'product_details.html')
+def ProductDetails(request, pk):
+    product = get_object_or_404(Inventory, pk=pk)
+    featured_inventory = Inventory.objects.filter(is_featured=True).order_by('-id')
+    context = {
+        'product': product,
+        'featured_inventory': featured_inventory
+    }
+    
+    return render(request,'product_details.html', context)
 
 def Product_By_Category(request, pk):
     
@@ -53,11 +60,13 @@ def Product_By_Category(request, pk):
     
     #Now fetch products that matches the sub_category id
     products = Inventory.objects.filter(sub_category=sub_category)
-
+    
+    featured_inventory = Inventory.objects.filter(is_featured=True).order_by('-id')
     context = {
        'category' : sub_category.category,
        'sub_category': sub_category,
-       'products': products
+       'products': products,
+       'featured_inventory': featured_inventory
     }
 
     return render(request, 'prod_by_category.html', context)

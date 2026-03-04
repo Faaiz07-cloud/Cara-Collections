@@ -72,7 +72,7 @@ Cara | Home
   <p>Summer Collection New Modern Design</p>
   <div class="product-box">
     {% for product in featured_inventory %}
-    <div class="prod" data-url="{% url 'product_details' %}">
+    <div class="prod" data-url="{% url 'product_details' product.id %}">
       <img src="{{ product.p_img.url }}" alt="{{ product.p_name }}" />
       <div class="desc">
         <span>{{ product.p_brand }}</span>
@@ -130,7 +130,7 @@ Cara | Home
   <p class="new">Hot off the shelves ready for you</p>
   <div class="product-box">
     {% for product in new_arrivals_inventory %}
-    <div class="prod" data-url="{% url 'product_details' %}">
+    <div class="prod" data-url="{% url 'product_details' product.id %}">
       <img src="{{ product.p_img.url }}" alt="{{product.p_name}}" />
       <div class="desc">
         <span>{{ product.p_brand }}</span>

@@ -4,7 +4,7 @@
 
 {% block title %}
 {{ sub_category.name }}
-{% endblock %} 
+{% endblock %}
 
 {% block content %}
 
@@ -23,13 +23,14 @@
 </section>
 <!-- homepage -->
 
+{% if products.exists %}
 <!-- products_by_category -->
 <section id="product1" class="product-section-p1 section-margin">
   <h2>{{ sub_category.name }}</h2>
   <p>Summer Collection New Modern Design</p>
   <div class="product-box">
     {% for product in products %}
-    <div class="prod" data-url="{% url 'product_details' %}">
+    <div class="prod" data-url="{% url 'product_details' product.id %}">
       <img src="{{ product.p_img.url }}" alt="{{ product.p_name }}" />
       <div class="desc">
         <span>{{ product.p_brand }}</span>
@@ -58,4 +59,52 @@
 </section>
 <!-- pagination -->
 
-{% endblock %}
+<!-- banner -->
+<section id="banner" class="section-m1">
+  <img src="{% static 'img/banner/b2.jpg' %}" alt="Repair Services Banner" />
+  <div class="banner-content">
+    <h4>Repair Services</h4>
+    <h2>Up to <span>70% Off</span> - All T-Shirts & Accessories</h2>
+    <button>Explore More</button>
+  </div>
+</section>
+<!-- banner -->
+
+<!-- featured products -->
+<section id="product1" class="product-section-p1">
+  <h2>Featured Products</h2>
+  <p>Summer Collection New Modern Design</p>
+  <div class="product-box">
+    {% for product in featured_inventory %}
+    <div class="prod" data-url="{% url 'product_details' product.id %}">
+      <img src="{{ product.p_img.url }}" alt="{{ product.p_name }}" />
+      <div class="desc">
+        <span>{{ product.p_brand }}</span>
+        <h5>{{ product.p_name }}</h5>
+        <div class="rating">
+          {% for i in "12345" %} {% if forloop.counter <= product.p_rating %}
+          <i class="fas fa-star"></i>
+          {% else %}
+          <i class="far fa-star"></i>
+          {% endif %} {% endfor %}
+        </div>
+        <h4>${{ product.p_price }}</h4>
+      </div>
+      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+<!-- featured products -->
+
+{% else %}
+<!-- No Products Message -->
+<section id="no-products">
+  <div class="no-product-box">
+    <h2>No Products Available</h2>
+    <p>Please check back later or explore other categories.</p>
+  </div>
+</section>
+<!-- No Products Message -->
+
+{% endif %} {% endblock %}

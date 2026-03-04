@@ -1,11 +1,13 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Category, SubCategory, Inventory, banner 
+from .models import Category, SubCategory, Inventory, ProductGallery, banner 
 
 class SubCategoryInline(admin.TabularInline):
     model = SubCategory
     extra = 1
+    can_delete = True
+    fk_name = 'category'
 
 class CategoryAdmin(admin.ModelAdmin):
     inlines = [SubCategoryInline]
@@ -15,8 +17,15 @@ class CategoryAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at', 'updated_at')
 admin.site.register(Category, CategoryAdmin)
 
+class ProdGalleryInline(admin.TabularInline):
+    model = ProductGallery
+    extra = 1
+    can_delete = True
+    fk_name = 'inventory'
+
 class InventoryAdmin(admin.ModelAdmin):
-    list_display = ('p_name', 'p_img', 'p_brand', 'p_price', 'p_rating', 'is_featured', 'category', 'sub_category', 'created_at')
+    inlines = [ProdGalleryInline]
+    list_display = ('p_name', 'p_img', 'p_brand', 'p_price', 'p_rating', 'is_featured', 'category', 'sub_category', 'p_desc', 'created_at')
     list_filter = ('is_featured', 'created_at', 'category', 'sub_category')
     search_fields = ('p_name', 'category', 'sub_category')
     readonly_fields = ('created_at', 'updated_at')
