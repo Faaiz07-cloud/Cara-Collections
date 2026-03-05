@@ -59,7 +59,7 @@ def Product_By_Category(request, pk):
     sub_category = get_object_or_404(SubCategory, pk=pk)
     
     #Now fetch products that matches the sub_category id
-    products = Inventory.objects.filter(sub_category=sub_category)
+    products = Inventory.objects.filter(sub_category=sub_category).order_by('-id')
     
     featured_inventory = Inventory.objects.filter(is_featured=True).order_by('-id')
     context = {

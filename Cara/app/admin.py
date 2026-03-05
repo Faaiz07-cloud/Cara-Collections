@@ -27,7 +27,7 @@ class InventoryAdmin(admin.ModelAdmin):
     inlines = [ProdGalleryInline]
     list_display = ('p_name', 'p_img', 'p_brand', 'p_price', 'p_rating', 'is_featured', 'category', 'sub_category', 'p_desc', 'created_at')
     list_filter = ('is_featured', 'created_at', 'category', 'sub_category')
-    search_fields = ('p_name', 'category', 'sub_category')
+    search_fields = ('p_name', 'category__name', 'sub_category__name')
     readonly_fields = ('created_at', 'updated_at')
 admin.site.register(Inventory, InventoryAdmin)
 
