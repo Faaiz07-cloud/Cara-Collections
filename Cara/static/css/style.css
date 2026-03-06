@@ -1445,7 +1445,7 @@ Product Detail Page
   display: flex;
   gap: 50px;
   padding: 40px 80px;
-  margin-top: 40px;
+  margin-top: 1px;
   flex-wrap: wrap;
   background-color: #f9f9f9;
 }
