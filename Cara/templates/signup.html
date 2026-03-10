@@ -1,0 +1,18 @@
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% block title %}
+Cara | SignUp
+{% endblock %}
+
+{% block content %}
+
+<h1>Sign Up</h1>
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">SignUp</button>
+</form>
+
+{% endblock %}
