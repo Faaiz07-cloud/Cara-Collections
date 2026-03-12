@@ -1,13 +1,15 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from datetime import timedelta
-from .forms import SignUpForm
-from django.contrib.auth import login, logout
-from django.contrib import messages
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.decorators import login_required
-
 from app.models import Category, SubCategory, Inventory,  banner
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login
+from django.contrib.auth import logout
+from .forms import SignUpForm
+from .forms import LoginForm
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 def Master(request):
     return render(request,'master.html')
@@ -78,39 +80,39 @@ def Product_By_Category(request, pk):
     return render(request, 'prod_by_category.html', context)
 
 def SignUp(request):
-    form = SignUpForm()
+
     if request.method == "POST":
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            messages.success(request, "User successfully SignUp!")
-            return redirect('index')
-        
+       form = SignUpForm(request.POST)
+       if form.is_valid():
+           user = form.save()
+           login(request, user)
+           return redirect('index')
+    else:
+        form = SignUpForm()
+
     context = {
         'form': form
     }    
+
     return render(request, 'signup.html', context)
 
-def UserLogin(request):
-    form = AuthenticationForm()
+def Login(request):
+
     if request.method == "POST":
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            messages.success(request, "User successfully Login!")
-            return redirect('index')
-        else:
-            messages.error(request, "Invalid username or password!")
+       form = LoginForm(request, data=request.POST)
+       if form.is_valid():
+           user = form.get_user()
+           login(request, user)
+           return redirect('index')
+    else:
+        form = LoginForm()
+
     context = {
         'form': form
-    }
-    return render(request, 'login.html', context)    
+    }    
 
-def UserLogout(request):
+    return render(request, 'login.html', context)
+
+def Logout(request):
     logout(request)
-    messages.success(request, "User successfully Logout!")
     return redirect('login')
-
-
