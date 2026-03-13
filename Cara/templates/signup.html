@@ -47,11 +47,12 @@
                 <!-- Right Form -->
                 <div class="col-md-6 d-flex align-items-center">
                   <div class="card-body p-5">
-                    <form method="POST"
+                    <form
+                      method="POST"
                       class="h-auto d-flex flex-column justify-content-center"
                     >
                       {% csrf_token %}
-                      
+
                       <!-- Logo -->
                       <div class="d-flex align-items-center mb-4">
                         <i class="fas fa-cubes fa-2x me-3 logo-icon"></i>
@@ -61,13 +62,44 @@
                       <!-- Heading -->
                       <h5 class="login-heading mb-4">Create an Account</h5>
 
+                      <!-- First Name + Last Name -->
+                      <div class="d-flex gap-3 mb-4">
+                        <!-- First Name -->
+                        <div class="flex-grow-1">
+                          <div data-mdb-input-init class="form-outline w-100">
+                            {{ form.first_name }}
+                            <label class="form-label" for="first_name"
+                              >First Name</label
+                            >
+                            <small class="text-danger"
+                              >{{ form.first_name.errors }}</small
+                            >
+                          </div>
+                        </div>
+
+                        <!-- Last Name -->
+                        <div class="flex-grow-1">
+                          <div data-mdb-input-init class="form-outline w-100">
+                            {{ form.last_name }}
+                            <label class="form-label" for="last_name"
+                              >Last Name</label
+                            >
+                            <small class="text-danger"
+                              >{{ form.last_name.errors }}</small
+                            >
+                          </div>
+                        </div>
+                      </div>
+
                       <!-- Username -->
                       <div data-mdb-input-init class="form-outline mb-4">
                         {{ form.username }}
                         <label class="form-label" for="username"
                           >Username</label
                         >
-                        <small class="text-danger">{{ form.username.errors }}</small>
+                        <small class="text-danger"
+                          >{{ form.username.errors }}</small
+                        >
                       </div>
 
                       <!-- Email -->
@@ -76,7 +108,9 @@
                         <label class="form-label" for="email"
                           >Email Address</label
                         >
-                        <small class="text-danger">{{ form.email.errors }}</small>
+                        <small class="text-danger"
+                          >{{ form.email.errors }}</small
+                        >
                       </div>
 
                       <!-- Password -->
@@ -85,7 +119,9 @@
                         <label class="form-label" for="password"
                           >Password</label
                         >
-                        <small class="text-danger">{{ form.password1.errors }}</small>
+                        <small class="text-danger"
+                          >{{ form.password1.errors }}</small
+                        >
                       </div>
 
                       <!-- Confirm Password -->
@@ -94,7 +130,9 @@
                         <label class="form-label" for="confirmPassword"
                           >Confirm Password</label
                         >
-                        <small class="text-danger">{{ form.password2.errors }}</small>
+                        <small class="text-danger"
+                          >{{ form.password2.errors }}</small
+                        >
                       </div>
 
                       <!-- SignUp Button -->

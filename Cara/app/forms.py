@@ -5,8 +5,8 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 
 class SignUpForm(UserCreationForm):
-    first_name = forms.CharField(max_length=254, required=False, widget=forms.TextInput(attrs={'class':'form-control form-control-lg'}))
-    last_name = forms.CharField(max_length=254, required=False, widget=forms.TextInput(attrs={'class':'form-control form-control-lg'}))
+    first_name = forms.CharField(max_length=254, required=True, widget=forms.TextInput(attrs={'class':'form-control form-control-lg'}))
+    last_name = forms.CharField(max_length=254, required=True, widget=forms.TextInput(attrs={'class':'form-control form-control-lg'}))
     email = forms.EmailField(max_length=254, required=True, widget=forms.EmailInput(attrs={'class':'form-control form-control-lg'}))
     username = forms.CharField(max_length=254, required=True, widget=forms.TextInput(attrs={'class':'form-control form-control-lg'}))
     password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control form-control-lg'}), strip=False)   
