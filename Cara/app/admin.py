@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Category, SubCategory, Inventory, ProductGallery, banner 
+from .models import Category, SubCategory, Inventory, ProductGallery, banner, UserProfile
 
 class SubCategoryInline(admin.TabularInline):
     model = SubCategory
@@ -38,3 +38,37 @@ class BannerAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at',)
 admin.site.register(banner, BannerAdmin)
 
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = (  
+        'get_username', 
+        'get_first_name', 
+        'get_last_name', 
+        'get_email', 
+        'phone', 
+        'address', 
+        'profile_pic', 
+        'gender'
+    )
+
+    list_filter = ('gender',)
+
+    search_fields = ('user__username',)
+
+    # Methods to get related User fields
+    def get_username(self, obj):
+        return obj.user.username
+    get_username.short_description = 'Username'
+
+    def get_first_name(self, obj):
+        return obj.user.first_name
+    get_first_name.short_description = 'First Name'
+
+    def get_last_name(self, obj):
+        return obj.user.last_name
+    get_last_name.short_description = 'Last Name'
+
+    def get_email(self, obj):
+        return obj.user.email
+    get_email.short_description = 'Email'
+
+admin.site.register(UserProfile, ProfileAdmin)

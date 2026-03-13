@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
+from .models import UserProfile
 
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=254, required=True, widget=forms.TextInput(attrs={'class':'form-control form-control-lg'}))
@@ -63,4 +64,12 @@ class LoginForm(AuthenticationForm):
             user = authenticate(username=username, password=password)
             if user is None:
                 raise forms.ValidationError("Incorrect Password!")
-        return password          
+        return password    
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['phone', 'address', 'gender', 'profile_pic']
+        widgets = {
+            'profile_pic': forms.FileInput(attrs={'class': 'form-control-file'}),
+        }

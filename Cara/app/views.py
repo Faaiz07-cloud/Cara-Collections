@@ -8,6 +8,7 @@ from django.contrib.auth import login
 from django.contrib.auth import logout
 from .forms import SignUpForm
 from .forms import LoginForm
+from .forms import ProfileForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
@@ -114,4 +115,27 @@ def Login(request):
 
 def Logout(request):
     logout(request)
-    return redirect('login')
+    return redirect('index')
+
+@login_required
+def edit_profile(request):
+    profile = request.user.userprofile
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = ProfileForm(instance=profile)
+        context = {
+            'form': form
+        }
+    return render(request, 'edit_profile.html', context)
+
+@login_required
+def profile(request):
+    profile = request.user.userprofile
+    context = {
+        'profile': profile
+    }
+    return render(request, 'profile.html', context)

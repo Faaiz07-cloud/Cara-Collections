@@ -60,23 +60,6 @@
               >Contact</a
             >
           </li>
-          {% if user.is_authenticated %}
-            <li>
-              <a
-               class="{% if request.resolver_match.url_name == 'logout' %}active{% endif %}"
-               href="{% url 'logout' %}"
-               >Logout</a
-              >
-            </li>
-          {% else %}
-            <li>
-              <a
-               class="{% if request.resolver_match.url_name == 'login' %}active{% endif %}"
-               href="{% url 'login' %}"
-               >Login</a
-              >
-            </li>
-          {% endif %}    
           <li id="shopping-bag">
             <a
               class="bag {% if request.resolver_match.url_name == 'cart' %}active-cart{% endif %}"
@@ -84,6 +67,32 @@
               ><i class="fas fa-shopping-bag"></i
             ></a>
           </li>
+
+          {% if user.is_authenticated %}
+          <li>
+            <a href="{% url 'profile' %}" class="profile">
+              <img
+                src="{% if user.is_authenticated and user.userprofile.profile_pic %}{{ user.userprofile.profile_pic.url }}{% else %}{{ MEDIA_URL }}profiles/default.png{% endif %}"
+                alt="Profile"
+                style="
+                  width: 37px;
+                  height: 37px;
+                  border-radius: 50%;
+                  object-fit: cover;
+                  border: 1px solid #ccc;
+                "
+              />
+            </a>
+          </li>
+          {% else %}
+          <li>
+            <a
+              href="{% url 'login' %}"
+              >Login</a
+            >
+          </li>
+          {% endif %}
+
           <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
         </ul>
       </div>
