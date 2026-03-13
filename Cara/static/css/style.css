@@ -111,7 +111,7 @@ navbar
   color: #088178;
 }
 
-#navbar li a.active::after {
+#navbar li a.active:not(.profile)::after {
   content: "";
   width: 33px;
   height: 2px;
@@ -121,7 +121,7 @@ navbar
   left: 20px;
 }
 
-#navbar li a:not(.bag):hover::after {
+#navbar li a:not(.bag):not(.profile):hover::after {
   content: "";
   width: 33px;
   height: 2px;
@@ -131,7 +131,8 @@ navbar
   left: 20px;
 }
 
-#navbar li a.bag::after {
+#navbar li a.bag::after,
+#navbar li a.profile::after {
   content: none !important;
   display: none !important;
 }
@@ -2329,93 +2330,262 @@ no products message
 login signup form
 */
 .login-section {
-    width: 100%;
-    min-height: 100vh;
-    background-color: #e3e6f3;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #e3e6f3;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    padding: 10px;
+  padding: 10px;
 }
 
-.login-section .row{
-    margin:0;
-    justify-content:center;
+.login-section .row {
+  margin: 0;
+  justify-content: center;
 }
 
 .login-card {
-    border-radius: 1rem;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 
-    max-width: 700px;
-    width: 100%;
-    margin: auto;
+  max-width: 700px;
+  width: 100%;
+  margin: auto;
 }
 
 .login-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .login-card .col-md-6.d-flex.align-items-center {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .login-card .card-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-    padding: 2rem 1.5rem;
+  padding: 2rem 1.5rem;
 }
 
 .logo-icon {
-    color: #ff6219;
+  color: #ff6219;
 }
 
 .login-heading {
-    font-weight: normal;
-    letter-spacing: 1px;
-    color: #333;
+  font-weight: normal;
+  letter-spacing: 1px;
+  color: #333;
 }
 
 .login-text {
-    color: #393f81;
-    margin-top: 10px;
+  color: #393f81;
+  margin-top: 10px;
 }
 
 .login-text a {
-    color: #393f81;
-    text-decoration: none;
+  color: #393f81;
+  text-decoration: none;
 }
 
 .login-text a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .btn-lg.w-100 {
-    padding: 0.65rem 1rem;
-    font-size: 1rem;
+  padding: 0.65rem 1rem;
+  font-size: 1rem;
 }
 
 /* responsive */
 @media (max-width: 767px) {
+  .login-card {
+    max-width: 95%;
+  }
 
-    .login-card{
-        max-width: 95%;
-    }
-
-    .login-heading{
-        text-align:center;
-    }
-
+  .login-heading {
+    text-align: center;
+  }
 }
 /*
 login signup form
+*/
+
+/* 
+profile page
+*/
+.profile-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.profile-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.profile-card {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.profile-img img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #6c63ff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.profile-details p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.profile-details strong {
+  color: #333;
+}
+
+.profile-actions {
+  text-align: center;
+}
+
+.profile-actions .btn {
+  display: inline-block;
+  margin: 10px 15px;
+  padding: 10px 25px;
+  font-size: 16px;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+.edit-btn {
+  background-color: #6c63ff;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #5750d4;
+}
+
+.logout-btn {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+.logout-btn:hover {
+  background-color: #e55a5a;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .profile-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-img img {
+    margin-bottom: 20px;
+  }
+}
+/* 
+profile page
+*/
+
+/* 
+edit profile page
+*/
+.edit-profile-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.edit-profile-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.edit-profile-form p {
+  margin-bottom: 15px;
+}
+
+.edit-profile-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #555;
+}
+
+.edit-profile-form input,
+.edit-profile-form select,
+.edit-profile-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.edit-profile-form input:focus,
+.edit-profile-form select:focus,
+.edit-profile-form textarea:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 0 5px rgba(108, 99, 255, 0.4);
+  outline: none;
+}
+
+.save-btn {
+  display: block;
+  width: 100%;
+  padding: 12px 0;
+  font-size: 16px;
+  background-color: #6c63ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+.save-btn:hover {
+  background-color: #5750d4;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .edit-profile-container {
+    padding: 20px;
+  }
+}
+/* 
+edit profile page
 */
