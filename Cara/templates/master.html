@@ -60,13 +60,23 @@
               >Contact</a
             >
           </li>
-          <li>
-            <a
-              class="{% if request.resolver_match.url_name == 'logout' %}active{% endif %}"
-              href="{% url 'logout' %}"
-              >Logout</a
-            >
-          </li>
+          {% if user.is_authenticated %}
+            <li>
+              <a
+               class="{% if request.resolver_match.url_name == 'logout' %}active{% endif %}"
+               href="{% url 'logout' %}"
+               >Logout</a
+              >
+            </li>
+          {% else %}
+            <li>
+              <a
+               class="{% if request.resolver_match.url_name == 'login' %}active{% endif %}"
+               href="{% url 'login' %}"
+               >Login</a
+              >
+            </li>
+          {% endif %}    
           <li id="shopping-bag">
             <a
               class="bag {% if request.resolver_match.url_name == 'cart' %}active-cart{% endif %}"

@@ -14,7 +14,6 @@ from django.contrib import messages
 def Master(request):
     return render(request,'master.html')
 
-@login_required
 def Index(request):
     categories = Category.objects.all()
     featured_inventory = Inventory.objects.filter(is_featured=True).order_by('-id')
