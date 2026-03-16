@@ -1,5 +1,8 @@
 from django.urls import path
 from .import views
+from django.contrib.auth import views as auth_views
+from .forms import CustomPasswordResetForm
+from .forms import CustomSetPasswordForm
 
 urlpatterns = [
     path('master/', views.Master, name='master'),
@@ -18,4 +21,18 @@ urlpatterns = [
     path('logout/', views.Logout, name='logout'),
     path('profile/', views.profile, name='profile'),
     path('profile/edit/', views.edit_profile, name='edit_profile'),
+
+    # forgot password urls
+
+    # Page where user enters email to request password reset
+    path('forgot-password/', auth_views.PasswordResetView.as_view(template_name='forgot_password.html', form_class=CustomPasswordResetForm), name='password_reset'),
+
+    # Shows message that password reset email has been sent
+    path('forgot-password/done/', auth_views.PasswordResetDoneView.as_view(template_name='forgot_password_done.html'), name='password_reset_done'),
+
+    # Link from email where user sets a new password
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='password_reset_confirm.html', form_class=CustomSetPasswordForm), name='password_reset_confirm'),
+
+    # Confirmation page after password has been successfully reset
+    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'), name='password_reset_complete'),
 ]
