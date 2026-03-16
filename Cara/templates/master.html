@@ -87,6 +87,7 @@
           {% else %}
           <li>
             <a
+              class="{% if request.resolver_match.url_name == 'password_reset' or request.resolver_match.url_name == 'password_reset_done' or request.resolver_match.url_name == 'password_reset_confirm' or request.resolver_match.url_name == 'password_reset_complete' %}active{% endif %}"
               href="{% url 'login' %}"
               >Login</a
             >

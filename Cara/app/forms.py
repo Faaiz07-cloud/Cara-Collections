@@ -4,6 +4,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from .models import UserProfile
+from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.forms import SetPasswordForm
 
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=254, required=True, widget=forms.TextInput(attrs={'class':'form-control form-control-lg'}))
@@ -73,3 +75,29 @@ class ProfileForm(forms.ModelForm):
         widgets = {
             'profile_pic': forms.FileInput(attrs={'class': 'form-control-file'}),
         }
+
+class CustomPasswordResetForm(PasswordResetForm):
+    email = forms.EmailField(max_length=254, widget=forms.EmailInput(attrs={'placeholder': 'Enter your registered email'}))
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if not User.objects.filter(email=email).exists():
+            raise forms.ValidationError("This email is not registered!")
+        return email       
+
+class CustomSetPasswordForm(SetPasswordForm):
+    new_password1 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Enter new password'}), strip=False)
+    new_password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Confirm your password'}), strip= False)
+
+    def clean_new_password2(self):
+        new_password1 = self.cleaned_data.get("new_password1")
+        new_password2 = self.cleaned_data.get("new_password2")
+
+        if not new_password1 or not new_password2:
+            raise forms.ValidationError("Both password fields are required!")
+        if new_password1 != new_password2:
+            raise forms.ValidationError("Passwords do not match! Please re-enter.")
+        if len(new_password1) < 8:
+            raise forms.ValidationError("Password must be at least 8 characters long!")
+        
+        return new_password2
