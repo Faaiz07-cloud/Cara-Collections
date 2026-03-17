@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
-from .models import UserProfile
+from .models import UserProfile, Contact
 from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.forms import SetPasswordForm
 
@@ -101,3 +101,32 @@ class CustomSetPasswordForm(SetPasswordForm):
             raise forms.ValidationError("Password must be at least 8 characters long!")
         
         return new_password2
+    
+class ContactForm(forms.ModelForm):
+    username = forms.CharField(required=True, widget=forms.TextInput(attrs={
+            'placeholder': 'Enter your username',
+            'class': 'input-field',
+        }))    
+    email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={
+            'placeholder': 'Enter your email',
+            'class': 'input-field',
+        }))
+
+    class Meta:
+        model = Contact
+        fields = ['subject', 'message']
+        widgets = {
+            'subject': forms.TextInput(attrs={'placeholder': 'Enter your subject', 'class': 'input-field',}),
+            'message': forms.Textarea(attrs={'placeholder': 'Enter your message', 'class': 'input-field',}),
+        }  
+
+    # validations
+    def clean(self):
+        cleaned_data = super().clean() 
+        username = self.cleaned_data.get('username')   
+        email = self.cleaned_data.get('email')  
+
+        if not User.objects.filter(username=username, email=email).exists():
+          raise forms.ValidationError('Username or Email is incorrect!')
+            
+        return cleaned_data     

@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-Cara | Contact Us
+Cara | Contact - Us
 {% endblock %}
 
 {% block content %}
@@ -57,7 +57,7 @@ Cara | Contact Us
         <i class="fa-solid fa-envelope"></i>
         <div>
           <h4>Email</h4>
-          <p>support@cara.com</p>
+          <p>sr1357061@gmail.com</p>
         </div>
       </div>
 
@@ -74,11 +74,19 @@ Cara | Contact Us
     <!-- right form -->
     <div class="contact-form">
       <h2>Send Message</h2>
-      <form>
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <input type="text" placeholder="Subject" required />
-        <textarea placeholder="Your Message" rows="5" required></textarea>
+      <form method="POST">
+        {% csrf_token %}
+        
+        {% if form.non_field_errors %}
+        <div class="error" style="color: red">
+          {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+
+        <div>{{ form.username }}</div>
+        <div>{{ form.email }}</div>
+        <div>{{ form.subject }}</div>
+        <div>{{ form.message }}</div>
         <button type="submit">Send Message</button>
       </form>
     </div>
