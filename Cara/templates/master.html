@@ -55,7 +55,7 @@
           </li>
           <li>
             <a
-              class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}"
+              class="{% if request.resolver_match.url_name == 'contact' or request.resolver_match.url_name == 'contact_success' %}active{% endif %}"
               href="{% url 'contact' %}"
               >Contact</a
             >

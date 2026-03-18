@@ -1,0 +1,36 @@
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% block title %}
+Cara | Contact - Us
+{% endblock %}
+
+{% block content %}
+
+<!-- homepage -->
+<section id="about-page-header">
+  <img
+    src="{% static 'img/about/banner.png' %}"
+    alt="Contact Banner"
+    class="about-header-img"
+  />
+
+  <div class="about-header-content">
+    <h2>#Contact Us</h2>
+    <p>
+      Connecting you with support, style, and service — every step of the way.
+    </p>
+  </div>
+</section>
+<!-- homepage -->
+
+<!-- Thank You Section -->
+<section id="thank-you-section">
+    <h2>Thank You!</h2>
+    <p>Your request has been sent successfully.</p>
+    <p>We will contact you soon.</p>
+</section>
+<!-- Thank You Section -->
+
+{% endblock %}

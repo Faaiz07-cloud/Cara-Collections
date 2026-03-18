@@ -1594,7 +1594,6 @@ Product Detail Page
 /*
 Blog Page
 */
-
 #blog-page-header {
   position: relative;
   background-repeat: no-repeat;
@@ -1764,11 +1763,13 @@ Blog Page
     top: -37px;
   }
 }
+/*
+Blog Page
+*/
 
 /*
 About-Page
 */
-
 .about-news-section-m1 {
   margin: 0 0 10px 0;
 }
@@ -1911,6 +1912,9 @@ About-Page
     margin: 5px 5px 5px 5px;
   }
 }
+/*
+About-Page
+*/
 
 /*
 contact page
@@ -1966,24 +1970,22 @@ contact page
   color: #555;
 }
 
-/* form */
 .contact-form form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.contact-form input,
-.contact-form textarea {
+.contact-form .input-field {
   padding: 12px 15px;
   border: 1px solid #ddd;
   outline: none;
   border-radius: 6px;
   font-family: inherit;
+  width: 100%;
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
+.contact-form .input-field:focus {
   border-color: #088178;
 }
 
@@ -2000,6 +2002,40 @@ contact page
 
 .contact-form button:hover {
   background: #066e67;
+}
+
+#thank-you-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    max-width: 700px;
+    margin: 40px auto;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+}
+
+#thank-you-section h2 {
+    font-size: 2.8rem;
+    color: #27ae60;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+#thank-you-section p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* responsive */
@@ -2071,6 +2107,9 @@ contact page
     padding: 40px;
   }
 }
+/*
+contact page
+*/
 
 /*
 cart page

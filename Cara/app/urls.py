@@ -9,7 +9,6 @@ urlpatterns = [
     path('', views.Index, name='index'),
     path('shop/', views.Shop, name='shop'),
     path('about/', views.About, name='about'),
-    path('contact/', views.Contact, name='contact'),
     path('blog/', views.Blog, name='blog'),
     path('cart/', views.Cart, name='cart'),
     path('product_d/<int:pk>/', views.ProductDetails, name='product_details'),
@@ -35,4 +34,9 @@ urlpatterns = [
 
     # Confirmation page after password has been successfully reset
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'), name='password_reset_complete'),
+
+    
+    # Contact Urls
+    path('contact/', views.ContactView, name='contact'),
+    path('contact_success/', views.ContactSuccess, name='contact_success'),
 ]
