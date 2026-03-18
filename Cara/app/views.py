@@ -44,8 +44,8 @@ def Shop(request):
 def About(request):
     return render(request,'about.html')
 
+@login_required
 def ContactView(request):
-    form = ContactForm()
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -120,11 +120,16 @@ def ContactView(request):
             msg_admin.send()
 
             return redirect('contact_success')
-
-    context = {
+        context = {
         'form': form
-    }
-    return render(request,'contact.html', context)
+        }
+        return render(request,'contact.html', context)
+    else:
+        form = ContactForm()
+        context = {
+        'form': form
+        }
+        return render(request,'contact.html', context)
 
 def ContactSuccess(request):
     return render(request, "contact_success.html")
@@ -174,6 +179,10 @@ def SignUp(request):
             user = form.save()
             login(request, user)
             return redirect('index')
+        context = {
+        'form': form    
+        }
+        return render(request, 'signup.html', context)
     else:
         form = SignUpForm()
         context = {
@@ -188,6 +197,10 @@ def Login(request):
             user = form.get_user()
             login(request, user)
             return redirect('index')
+        context = {
+        'form': form    
+        }
+        return render(request, 'login.html', context)
     else:
         form = LoginForm()
         context = {
