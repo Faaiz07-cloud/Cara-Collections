@@ -72,15 +72,6 @@ navbar
   justify-content: center;
 }
 
-#mobile {
-  display: none;
-  align-items: center;
-}
-
-#close {
-  display: none;
-}
-
 #navbar li {
   list-style: none;
   padding: 0 20px;
@@ -135,6 +126,91 @@ navbar
 #navbar li a.profile::after {
   content: none !important;
   display: none !important;
+}
+
+#shopping-bag .bag {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #1a1a1a;
+  text-decoration: none;
+}
+
+#shopping-bag .cart-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  background: #22c55e;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+@keyframes cartPop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.cart-count {
+  animation: cartPop 0.4s ease;
+}
+
+#mobile {
+  display: none;
+  align-items: center;
+}
+
+#mobile .bag {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 23px;
+  color: #1a1a1a;
+  text-decoration: none;
+}
+
+#mobile .cart-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  background: #22c55e;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+#close {
+  display: none;
 }
 /*
 navbar
@@ -2191,7 +2267,7 @@ cart page
   transition: 0.2s ease;
 }
 
-.qty-box .qty:hover{
+.qty-box .qty:hover {
   color: #e74c3c;
   transform: translateY(-5px);
 }
@@ -2265,7 +2341,7 @@ cart page
   margin-left: 220px;
 }
 
-.clear-cart:hover{
+.clear-cart:hover {
   color: #ff6f61;
 }
 
