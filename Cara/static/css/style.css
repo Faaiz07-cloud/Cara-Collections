@@ -2181,13 +2181,19 @@ cart page
   margin-top: 8px;
 }
 
-.qty-box a {
+.qty-box .qty {
   text-decoration: none;
   background: #f5f5f5;
-  padding: 3px 10px;
+  padding: 4px 10px 3px 10px;
   border-radius: 5px;
   color: #333;
   font-weight: bold;
+  transition: 0.2s ease;
+}
+
+.qty-box .qty:hover{
+  color: #e74c3c;
+  transform: translateY(-5px);
 }
 
 .price {
