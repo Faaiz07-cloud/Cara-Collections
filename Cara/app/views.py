@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from datetime import timedelta
-from app.models import Category, SubCategory, Inventory,  banner
+from app.models import Category, SubCategory, Inventory,  banner, Cart, CartItem
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login
@@ -236,69 +236,75 @@ def profile(request):
 # Cart Views
 @login_required
 def cart_add(request, id):
-    cart = request.session.get('cart', {})
-    cart[str(id)] = cart.get(str(id), 0) + 1
-    request.session['cart'] = cart
-    
-    # show success message
-    messages.success(request, 'Added to cart!')
+    # Get the user's cart (already auto-created by signal)
+    cart = request.user.cart
+
+    # Get the Product
+    product = get_object_or_404(Inventory, id=id)
+
+    # Check if product already in cart
+    cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
+ 
+    if not created:
+        #Already exists, just increment quantity
+        cart_item.quantity += 1
+        cart_item.save()
+
+    # Show success message
+    messages.success(request, 'Added to cart!') 
+
+    # Redirect to next url or home
     next_url = request.GET.get('next', '/')
     return redirect(next_url)
 
 @login_required
 def cart_detail(request):
-    cart = request.session.get('cart', {})
-    cart_items = []
-    for product_id, quantity in cart.items():
-        try:
-            product = Inventory.objects.get(id=product_id)  
-            cart_items.append({
-                'product': product,
-                'quantity': quantity
-            })
-        except Inventory.DoesNotExist:
-            continue
+    # Get the user's cart (already auto-created by signal)
+    cart = request.user.cart
 
-    # calculate total cart
-    total = sum(item['product'].p_price * item['quantity'] for item in cart_items)
+    # Get all cart items
+    cart_items = cart.items.all()
 
-    # Add shipping fee 
+    # Calculate Total
+    total = sum(item.get_total_price() for item in cart_items)
+
     if total >= 500:
         shipping_fee = 0
     else:
-        shipping_fee = 30  
-    
-    new_total = total + shipping_fee
+        shipping_fee = 30
 
-    return render(request, 'cart.html', {
+    new_total = total + shipping_fee 
+
+    context = {
         'cart_items': cart_items,
         'shipping_fee': shipping_fee,
         'total': total,
-        'new_total': new_total}, )
+        'new_total': new_total,
+    }      
+
+    return render(request, 'cart.html', context)
 
 def item_clear(request, id):
-    cart = request.session.get('cart', {})
-    if str(id) in cart:
-        del cart[str(id)]
-    request.session['cart'] = cart
+    cart_item = get_object_or_404(CartItem, id=id, cart=request.user.cart)
+    cart_item.delete()
     return redirect('cart_detail')
 
 def item_increment(request, id):
-    cart = request.session.get('cart', {})
-    if str(id) in cart:
-        cart[str(id)] += 1
-    request.session['cart'] = cart
-    return redirect('cart_detail')
+   cart_item = get_object_or_404(CartItem, id=id, cart=request.user.cart)
+   cart_item.quantity += 1
+   cart_item.save()
+   return redirect('cart_detail')
 
 def item_decrement(request, id):
-    cart = request.session.get('cart', {})
-    if str(id) in cart:
-        cart[str(id)] -= 1
-        if cart[str(id)] <= 0:
-            del cart[str(id)]
-    request.session['cart'] = cart
+    cart_item = get_object_or_404(CartItem, id=id, cart=request.user.cart)
+    if cart_item.quantity > 1:
+        cart_item.quantity -= 1
+        cart_item.save()
+    else:
+        cart_item.delete()
     return redirect('cart_detail')
 
 def cart_clear(request):
-    request.session['cart'] = {}
+    cart = request.user.cart
+    cart.items.all().delete()
     return redirect('cart_detail')

@@ -42,15 +42,15 @@ Cara | Cart
         <p>${{ item.product.p_price }}</p>
 
         <div class="qty-box">
-          <a class="qty" href="{% url 'item_decrement' item.product.id %}#cart-section">−</a>
+          <a class="qty" href="{% url 'item_decrement' item.id %}#cart-section">−</a>
           <span>{{ item.quantity }}</span>
-          <a class="qty" href="{% url 'item_increment' item.product.id %}#cart-section">+</a>
+          <a class="qty" href="{% url 'item_increment' item.id %}#cart-section">+</a>
         </div>
       </div>
 
-      <div class="price">${{ item.product.p_price|mul:item.quantity }}</div>
+      <div class="price">${{ item.get_total_price }}</div>
 
-      <a href="{% url 'item_clear' item.product.id %}" class="remove">×</a>
+      <a href="{% url 'item_clear' item.id %}" class="remove">×</a>
     </div>
     {% endfor %}
   </div>
