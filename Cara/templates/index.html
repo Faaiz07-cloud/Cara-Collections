@@ -72,7 +72,7 @@ Cara | Home
   <p>Summer Collection New Modern Design</p>
   <div class="product-box">
     {% for product in featured_inventory %}
-    <div class="prod" data-url="{% url 'product_details' product.id %}">
+    <div id="product-{{ product.id }}" class="prod" data-url="{% url 'product_details' product.id %}">
       <img src="{{ product.p_img.url }}" alt="{{ product.p_name }}" />
       <div class="desc">
         <span>{{ product.p_brand }}</span>
@@ -86,7 +86,7 @@ Cara | Home
         </div>
         <h4>${{ product.p_price }}</h4>
       </div>
-      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+      <a href="{% url 'cart_add' product.id %}?next={{ request.path }}#product-{{ product.id }}"><i class="fa-solid fa-cart-shopping cart"></i></a>
     </div>
     {% endfor %}
   </div>
@@ -130,7 +130,7 @@ Cara | Home
   <p class="new">Hot off the shelves ready for you</p>
   <div class="product-box">
     {% for product in new_arrivals_inventory %}
-    <div class="prod" data-url="{% url 'product_details' product.id %}">
+    <div id="product-{{ product.id }}" class="prod" data-url="{% url 'product_details' product.id %}">
       <img src="{{ product.p_img.url }}" alt="{{product.p_name}}" />
       <div class="desc">
         <span>{{ product.p_brand }}</span>
@@ -144,7 +144,7 @@ Cara | Home
         </div>
         <h4>${{ product.p_price }}</h4>
       </div>
-      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+      <a href="{% url 'cart_add' product.id %}?next={{ request.path }}#product-{{ product.id }}"><i class="fa-solid fa-cart-shopping cart"></i></a>
     </div>
     {% endfor %}
   </div>

@@ -62,10 +62,13 @@
           </li>
           <li id="shopping-bag">
             <a
-              class="bag {% if request.resolver_match.url_name == 'cart' %}active-cart{% endif %}"
-              href="{% url 'cart' %}"
-              ><i class="fas fa-shopping-bag"></i
-            ></a>
+              class="bag {% if request.resolver_match.url_name == 'cart_detail' %}active-cart{% endif %}"
+              href="{% url 'cart_detail' %}"
+              ><i class="fas fa-shopping-bag"></i>
+              {% if cart_item_count > 0%}
+              <span class="cart-count">{{ cart_item_count }}</span>
+              {% endif %}
+            </a>
           </li>
 
           {% if user.is_authenticated %}
@@ -100,15 +103,26 @@
 
       <div id="mobile">
         <a
-          class="bag {% if request.resolver_match.url_name == 'cart' %}active-cart{% endif %}"
-          href="{% url 'cart' %}"
-          ><i class="fas fa-shopping-bag"></i
-        ></a>
+          class="bag {% if request.resolver_match.url_name == 'cart_detail' %}active-cart{% endif %}"
+          href="{% url 'cart_detail' %}"
+          ><i class="fas fa-shopping-bag"></i>
+          {% if cart_item_count > 0%}
+          <span class="cart-count">{{ cart_item_count }}</span>
+          {% endif %}
+        </a>
         <i id="bar" class="fa-solid fa-bars"></i>
       </div>
     </section>
     <!-- navbar -->
 
+    {% if messages %}
+    <div class="messages-container">
+      {% for message in messages %}
+      <div>{{ message }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    
     {% block content %} {% endblock %}
 
     <!-- news-letter -->

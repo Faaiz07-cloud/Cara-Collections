@@ -54,7 +54,7 @@ Cara | Shop
       <option>Large</option>
       <option>Small</option>
     </select>
-    <input type="number" value="1" /> <button>Add To Cart</button>
+    <input type="number" value="1" /> <a class= 'cart-btn' href="{% url 'cart_add' product.id %}?next={{ request.path }}#product-{{ product.id }}">Add to Cart</a>
     <h4>Product Details</h4>
     <p>{{ product.p_desc }}</p>
   </div>
@@ -78,7 +78,7 @@ Cara | Shop
   <p>Summer Collection New Modern Design</p>
   <div class="product-box">
     {% for product in featured_inventory %}
-    <div class="prod" data-url="{% url 'product_details' product.id %}">
+    <div id="product-{{ product.id }}" class="prod" data-url="{% url 'product_details' product.id %}">
       <img src="{{ product.p_img.url }}" alt="{{ product.p_name }}" />
       <div class="desc">
         <span>{{ product.p_brand }}</span>
@@ -92,7 +92,7 @@ Cara | Shop
         </div>
         <h4>${{ product.p_price }}</h4>
       </div>
-      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+      <a href="{% url 'cart_add' product.id %}?next={{ request.path }}#product-{{ product.id }}"><i class="fa-solid fa-cart-shopping cart"></i></a>
     </div>
     {% endfor %}
   </div>

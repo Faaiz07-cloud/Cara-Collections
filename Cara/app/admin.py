@@ -4,7 +4,7 @@ from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 
 # Register your models here.
-from .models import Category, SubCategory, Inventory, ProductGallery, banner, UserProfile, Contact
+from .models import Category, SubCategory, Inventory, ProductGallery, banner, UserProfile, Contact, Cart, CartItem
 
 class SubCategoryInline(admin.TabularInline):
     model = SubCategory
@@ -137,3 +137,28 @@ class ContactAdmin(admin.ModelAdmin):
         return obj.user.email
     get_email.short_description = 'Email'
 admin.site.register(Contact, ContactAdmin)
+
+
+class CartAdmin(admin.ModelAdmin):
+    list_display = ('get_username',)
+
+    def get_username(self, obj):
+        return obj.user.username
+    get_username.short_description = 'username'
+
+    search_fields = ('user__username',)
+admin.site.register(Cart, CartAdmin)
+
+class CartItemAdmin(admin.ModelAdmin):
+    list_display = ('get_username', 'get_product_name', 'quantity',)
+
+    def get_username(self, obj):
+        return obj.cart.user.username
+    get_username.short_description = 'username'
+
+    def get_product_name(self, obj):
+        return obj.product.p_name
+    get_product_name.short_description = 'product'
+
+    search_fields = ('cart__user__username',)
+admin.site.register(CartItem, CartItemAdmin)
