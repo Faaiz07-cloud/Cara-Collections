@@ -62,8 +62,8 @@
           </li>
           <li id="shopping-bag">
             <a
-              class="bag {% if request.resolver_match.url_name == 'cart' %}active-cart{% endif %}"
-              href="{% url 'cart' %}"
+              class="bag {% if request.resolver_match.url_name == 'cart_detail' %}active-cart{% endif %}"
+              href="{% url 'cart_detail' %}"
               ><i class="fas fa-shopping-bag"></i
             ></a>
           </li>
@@ -100,8 +100,8 @@
 
       <div id="mobile">
         <a
-          class="bag {% if request.resolver_match.url_name == 'cart' %}active-cart{% endif %}"
-          href="{% url 'cart' %}"
+          class="bag {% if request.resolver_match.url_name == 'cart_detail' %}active-cart{% endif %}"
+          href="{% url 'cart_detail' %}"
           ><i class="fas fa-shopping-bag"></i
         ></a>
         <i id="bar" class="fa-solid fa-bars"></i>
@@ -109,6 +109,14 @@
     </section>
     <!-- navbar -->
 
+    {% if messages %}
+    <div class="messages-container">
+      {% for message in messages %}
+      <div>{{ message }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    
     {% block content %} {% endblock %}
 
     <!-- news-letter -->

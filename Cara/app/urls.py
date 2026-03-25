@@ -10,7 +10,6 @@ urlpatterns = [
     path('shop/', views.Shop, name='shop'),
     path('about/', views.About, name='about'),
     path('blog/', views.Blog, name='blog'),
-    path('cart/', views.Cart, name='cart'),
     path('product_d/<int:pk>/', views.ProductDetails, name='product_details'),
     path('prod_by_category/<int:pk>/', views.Product_By_Category, name='Product_By_Category'),
 
@@ -39,4 +38,12 @@ urlpatterns = [
     # Contact Urls
     path('contact/', views.ContactView, name='contact'),
     path('contact_success/', views.ContactSuccess, name='contact_success'),
+
+    # Cart Urls
+    path('cart-detail/', views.cart_detail, name='cart_detail'),
+    path('cart/add/<int:id>/', views.cart_add, name='cart_add'),
+    path('cart/item_clear/<int:id>/', views.item_clear, name='item_clear'),
+    path('cart/item_increment/<int:id>/', views.item_increment, name='item_increment'),
+    path('cart/item_decrement/<int:id>/', views.item_decrement, name='item_decrement'),
+    path('cart/cart_clear/', views.cart_clear, name='cart_clear'),
 ]

@@ -28,7 +28,7 @@ Cara | Shop
   <h2 class="latest-coll">All Collections</h2>
   <div class="product-box" >
     {% for product in all_products %}
-    <div class="prod" data-url="{% url 'product_details' product.id %}"s>
+    <div id="product-{{ product.id }}" class="prod" data-url="{% url 'product_details' product.id %}"s>
        <img src="{{ product.p_img.url }}" alt="{{ product.p_name }}" />
       <div class="desc">
         <span>{{ product.p_brand }}</span>
@@ -42,7 +42,7 @@ Cara | Shop
         </div>
         <h4>${{ product.p_price }}</h4>
       </div>
-      <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+      <a href="{% url 'cart_add' product.id %}?next={{ request.path }}#product-{{ product.id }}"><i class="fa-solid fa-cart-shopping cart"></i></a>
     </div>
     {% endfor %}
   </div>

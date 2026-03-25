@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'app.apps.AppConfig',
 ]
 
+CART_SESSION_ID = 'cart'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

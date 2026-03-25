@@ -17,6 +17,7 @@ from django.core.mail import send_mail
 from django.core.mail import EmailMultiAlternatives
 from django.conf import settings
 from .models import Contact
+from django.contrib import messages
 
 def Master(request):
     return render(request,'master.html')
@@ -141,9 +142,6 @@ def Blog(request):
     }
     return render(request,'blog.html', context)
 
-def Cart(request):
-    return render(request,'cart.html')
-
 def ProductDetails(request, pk):
     product = get_object_or_404(Inventory, pk=pk)
     featured_inventory = Inventory.objects.filter(is_featured=True).order_by('-id')
@@ -234,3 +232,73 @@ def profile(request):
     'profile': profile
     }
     return render(request, 'profile.html', context)
+
+# Cart Views
+@login_required
+def cart_add(request, id):
+    cart = request.session.get('cart', {})
+    cart[str(id)] = cart.get(str(id), 0) + 1
+    request.session['cart'] = cart
+    
+    # show success message
+    messages.success(request, 'Added to cart!')
+    next_url = request.GET.get('next', '/')
+    return redirect(next_url)
+
+@login_required
+def cart_detail(request):
+    cart = request.session.get('cart', {})
+    cart_items = []
+    for product_id, quantity in cart.items():
+        try:
+            product = Inventory.objects.get(id=product_id)  
+            cart_items.append({
+                'product': product,
+                'quantity': quantity
+            })
+        except Inventory.DoesNotExist:
+            continue
+
+    # calculate total cart
+    total = sum(item['product'].p_price * item['quantity'] for item in cart_items)
+
+    # Add shipping fee 
+    if total >= 500:
+        shipping_fee = 0
+    else:
+        shipping_fee = 30  
+    
+    new_total = total + shipping_fee
+
+    return render(request, 'cart.html', {
+        'cart_items': cart_items,
+        'shipping_fee': shipping_fee,
+        'total': total,
+        'new_total': new_total}, )
+
+def item_clear(request, id):
+    cart = request.session.get('cart', {})
+    if str(id) in cart:
+        del cart[str(id)]
+    request.session['cart'] = cart
+    return redirect('cart_detail')
+
+def item_increment(request, id):
+    cart = request.session.get('cart', {})
+    if str(id) in cart:
+        cart[str(id)] += 1
+    request.session['cart'] = cart
+    return redirect('cart_detail')
+
+def item_decrement(request, id):
+    cart = request.session.get('cart', {})
+    if str(id) in cart:
+        cart[str(id)] -= 1
+        if cart[str(id)] <= 0:
+            del cart[str(id)]
+    request.session['cart'] = cart
+    return redirect('cart_detail')
+
+def cart_clear(request):
+    request.session['cart'] = {}
+    return redirect('cart_detail')
