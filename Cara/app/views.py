@@ -300,8 +300,6 @@ def item_decrement(request, id):
     if cart_item.quantity > 1:
         cart_item.quantity -= 1
         cart_item.save()
-    else:
-        cart_item.delete()
     return redirect('cart_detail')
 
 def cart_clear(request):
