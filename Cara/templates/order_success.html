@@ -1,0 +1,64 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block title %}Order Success{% endblock %}
+
+{% block content %}
+
+<!-- order success -->
+<section id="success-page">
+    <div class="success-container">
+        <div class="success-icon">
+            <div class="checkmark-circle">
+                <div class="checkmark draw"></div>
+            </div>
+        </div>
+
+        <div class="success-header">
+            <h2>Thank You, {{ order.full_name }}!</h2>
+            <p>Your order **#{{ order.id }}** has been placed successfully.</p>
+            <span class="status-badge">Confirmed</span>
+        </div>
+
+        <div class="order-details-card">
+            <h3>Order Summary</h3>
+            <div class="items-list">
+                {% for item in order.items.all %}
+                <div class="item-row">
+                    <span class="item-info">{{ item.product.p_name }} <small>(x{{ item.quantity }})</small></span>
+                    <span class="item-price">${{ item.price }}</span>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="summary-footer">
+                <div class="summary-line">
+                    <span>Shipping:</span>
+                    <span>{% if total >= 500 %}Free{% else %}${{ 30 }}.0{% endif %}</span>
+                </div>
+                <div class="summary-line">
+                    <span>Payment Method:</span>
+                    <span>{{ order.payment_method|capfirst }}</span>
+                </div>
+                <div class="summary-line">
+                    <span>Shipping Address:</span>
+                    <span class="address-text">{{ order.address }}</span>
+                </div>
+                
+                <hr>
+                <div class="summary-line total">
+                    <strong>Total Paid:</strong>
+                    <strong>${{ order.total_price }}</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <a href="{% url 'index' %}" class="btn-continue">Continue Shopping</a>
+            <p class="support-text">Having issues? <a href="{% url 'contact' %}">Contact our Support Team</a></p>
+        </div>
+    </div>
+</section>
+<!-- order success -->
+
+{% endblock %}

@@ -1,11 +1,9 @@
 {% extends 'master.html' %}
 
-{% load static %}
-
-{% load cart_extras %}
+{% load static %} 
 
 {% block title %}
-Cara | Cart
+Cara | Cart 
 {% endblock %}
 
 {% block content %}
@@ -42,9 +40,13 @@ Cara | Cart
         <p>${{ item.product.p_price }}</p>
 
         <div class="qty-box">
-          <a class="qty" href="{% url 'item_decrement' item.id %}#cart-section">−</a>
+          <a class="qty" href="{% url 'item_decrement' item.id %}#cart-section"
+            >−</a
+          >
           <span>{{ item.quantity }}</span>
-          <a class="qty" href="{% url 'item_increment' item.id %}#cart-section">+</a>
+          <a class="qty" href="{% url 'item_increment' item.id %}#cart-section"
+            >+</a
+          >
         </div>
       </div>
 
@@ -68,9 +70,9 @@ Cara | Cart
       <span>Shipping</span>
       <span>
         {% if shipping_fee == 0 %}
-          Free
+         Free
         {% else %}
-          ${{ shipping_fee }}.0
+         ${{ shipping_fee }}.0
         {% endif %}
       </span>
     </div>
@@ -80,7 +82,7 @@ Cara | Cart
       <span>${{ new_total }}</span>
     </div>
 
-    <button class="checkout-btn">Checkout</button>
+    <a href="{% url 'checkout' %}" class="checkout-btn">Checkout</a>
 
     <a href="{% url 'cart_clear' %}" class="clear-cart">Clear Cart</a>
   </div>

@@ -62,7 +62,7 @@
           </li>
           <li id="shopping-bag">
             <a
-              class="bag {% if request.resolver_match.url_name == 'cart_detail' %}active-cart{% endif %}"
+              class="bag {% if request.resolver_match.url_name == 'cart_detail' or request.resolver_match.url_name == 'checkout' or request.resolver_match.url_name == 'order_success' %}active-cart{% endif %}"
               href="{% url 'cart_detail' %}"
               ><i class="fas fa-shopping-bag"></i>
               {% if cart_item_count > 0%}
@@ -103,7 +103,7 @@
 
       <div id="mobile">
         <a
-          class="bag {% if request.resolver_match.url_name == 'cart_detail' %}active-cart{% endif %}"
+          class="bag {% if request.resolver_match.url_name == 'cart_detail' or request.resolver_match.url_name == 'checkout' or request.resolver_match.url_name == 'order_success' %}active-cart{% endif %}"
           href="{% url 'cart_detail' %}"
           ><i class="fas fa-shopping-bag"></i>
           {% if cart_item_count > 0%}
@@ -244,7 +244,7 @@
       </div>
     </footer>
     <!-- footer -->
-
+    
     <script src="{% static 'java/script.js' %}"></script>
   </body>
 </html>

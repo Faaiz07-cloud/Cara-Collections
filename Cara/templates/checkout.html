@@ -1,0 +1,60 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block content %}
+
+<!-- checkout -->
+<section id="checkout-wrapper">
+    <div class="checkout-container">
+
+        <!-- Left: Billing & Shipping -->
+        <div class="checkout-left">
+            <h2>Billing & Shipping Details</h2>
+            <form method="POST" action="{% url 'place_order' %}">
+                {% csrf_token %}
+                <input type="text" name="full_name" placeholder="Full Name" value="{{ request.user.get_full_name }}" required>
+                <input type="email" name="email" placeholder="Email" value="{{ request.user.email }}" required>
+                <input type="text" name="phone" placeholder="Phone" value="{{ request.user.userprofile.phone }}">
+                <textarea name="address" placeholder="Shipping Address" required>{{ request.user.userprofile.address }}</textarea>
+                <textarea name="notes" placeholder="Order Notes (Optional)"></textarea>
+
+                <h3>Payment Method</h3>
+                <div class="payment-methods">
+                    <label><input type="radio" name="payment_method" value="cod" checked> Cash on Delivery</label>
+                    <label><input type="radio" name="payment_method" value="card"> Credit/Debit Card</label>
+                    <label><input type="radio" name="payment_method" value="paypal"> PayPal</label>
+                    <label><input type="radio" name="payment_method" value="jazzcash"> JazzCash</label>
+                    <label><input type="radio" name="payment_method" value="easypaisa"> EasyPaisa</label>
+                </div>
+        </div>
+
+        <!-- Right: Order Summary -->
+        <div class="checkout-right">
+            <h2>Your Order</h2>
+            <div class="order-items">
+                {% for item in cart_items %}
+                <div class="order-item">
+                    <span class="item-name">{{ item.product.p_name }}</span>
+                    <span class="item-qty">x {{ item.quantity }}</span>
+                    <span class="item-price">${{ item.get_total_price }}</span>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="order-summary">
+                <p>Subtotal: <span>${{ total }}</span></p>
+                <p>Shipping: <span>{% if shipping_fee == 0 %}Free{% else %}${{ shipping_fee }}.0{% endif %}</span></p>
+                <p class="total"><strong>Total: <span>${{ new_total }}</span></strong></p>
+            </div>
+
+            <button type="submit" class="btn-place-order">Place Order</button>
+            </form>
+        </div>
+
+    </div>
+</section>
+<!-- checkout -->
+
+{% endblock %}

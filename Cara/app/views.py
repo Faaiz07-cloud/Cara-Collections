@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from datetime import timedelta
-from app.models import Category, SubCategory, Inventory,  banner, Cart, CartItem
+from app.models import Category, SubCategory, Inventory,  banner, Cart, CartItem, OrderItem, Order
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login
@@ -28,10 +28,11 @@ def Index(request):
 
     fifteen_days_ago = timezone.now() - timedelta(days=15)
     new_arrivals_inventory = Inventory.objects.filter(created_at__gte=fifteen_days_ago).order_by('-id')
+     
     context = {
     'categories': categories,
     'featured_inventory': featured_inventory,
-    'new_arrivals_inventory': new_arrivals_inventory
+    'new_arrivals_inventory': new_arrivals_inventory,
     }
     return render(request,'index.html', context)
 
@@ -306,3 +307,78 @@ def cart_clear(request):
     cart = request.user.cart
     cart.items.all().delete()
     return redirect('cart_detail')
+
+@login_required
+def CheckoutView(request):
+    cart = request.user.cart
+    cart_items = cart.items.all()
+
+    total = sum(item.get_total_price() for item in cart_items)
+    shipping_fee = 0 if total >= 500 else 30
+    new_total = total + shipping_fee
+
+    context = {
+        'cart_items': cart_items,
+        'total': total,
+        'shipping_fee': shipping_fee,
+        'new_total': new_total,
+    }
+    return render(request, 'checkout.html', context)
+
+@login_required
+def PlaceOrder(request):
+    if request.method == 'POST':
+        cart = request.user.cart
+        cart_items = cart.items.all()
+
+        if not cart_items:
+            messages.warning(request, "Your cart is empty!")
+            return redirect('checkout')
+
+        # Get form data
+        full_name = request.POST.get('full_name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        address = request.POST.get('address')
+        notes = request.POST.get('notes')
+        payment_method = request.POST.get('payment_method')
+
+        # Calculate totals
+        total_price = sum(item.get_total_price() for item in cart_items)
+        shipping_fee = 0 if total_price >= 500 else 30
+        new_total = total_price + shipping_fee
+
+        # Create Order
+        order = Order.objects.create(
+            user=request.user,
+            full_name=full_name,
+            email=email,
+            phone=phone,
+            address=address,
+            notes=notes,
+            payment_method=payment_method,
+            total_price=new_total
+        )
+
+        # Create OrderItems
+        for item in cart_items:
+            OrderItem.objects.create(
+                order=order,
+                product=item.product,
+                quantity=item.quantity,
+                price=item.get_total_price()
+            )
+
+        # Clear cart
+        cart.items.all().delete()
+
+        return redirect('order_success', order_id=order.id)
+
+@login_required
+def OrderSuccess(request, order_id):
+    order = get_object_or_404(Order, id=order_id, user=request.user)
+    context = {
+        'order': order,
+        'total': order.total_price,
+    }
+    return render(request, 'order_success.html', context)

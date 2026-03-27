@@ -46,4 +46,9 @@ urlpatterns = [
     path('cart/item_increment/<int:id>/', views.item_increment, name='item_increment'),
     path('cart/item_decrement/<int:id>/', views.item_decrement, name='item_decrement'),
     path('cart/cart_clear/', views.cart_clear, name='cart_clear'),
+
+    # Checkout Urls
+    path('checkout/', views.CheckoutView, name='checkout'),
+    path('place-order/', views.PlaceOrder, name='place_order'),
+    path('order-success/<int:order_id>/', views.OrderSuccess, name='order_success'),
 ]
