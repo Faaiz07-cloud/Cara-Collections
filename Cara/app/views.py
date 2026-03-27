@@ -13,7 +13,7 @@ from .forms import ContactForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
 from django.core.mail import EmailMultiAlternatives
 from django.conf import settings
 from .models import Contact
@@ -368,6 +368,79 @@ def PlaceOrder(request):
                 quantity=item.quantity,
                 price=item.get_total_price()
             )
+
+        # Build HTML items table
+        items_html = ""
+        for item in cart_items:
+            items_html += f"""
+            <tr>
+               <td style="padding: 8px; border: 1px solid #ddd;">{item.product.p_name}</td>
+               <td style="padding: 8px; border: 1px solid #ddd; text-align:center;">{item.quantity}</td>
+               <td style="padding: 8px; border: 1px solid #ddd; text-align:right;">Rs. {item.get_total_price()}</td>
+            </tr>
+            """
+
+        # Shipping display
+        shipping_display = "Free" if shipping_fee == 0 else f"Rs. {shipping_fee}.0"
+
+        # Complete HTML message
+        html_message = f"""
+        <html>
+        <head>
+            <style>
+               body {{ font-family: Arial, sans-serif; color: #333; }}
+               .container {{ width: 600px; margin: 0 auto; }}
+               h2 {{ color: #2E86C1; }}
+               table {{ border-collapse: collapse; width: 100%; margin-top: 20px; }}
+               th, td {{ border: 1px solid #ddd; padding: 8px; }}
+               th {{ background-color: #f2f2f2; text-align: left; }}
+            </style>
+        </head>
+        <body>
+            <div class="container">
+              <h2>Hi {order.full_name},</h2>
+              <p>Your order has been placed successfully!</p>
+              <h3>Order Details:</h3>
+              <p><strong>Order ID:</strong> {order.id}</p>
+
+              <table>
+                <thead>
+                    <tr>
+                      <th>Product</th>
+                      <th>Quantity</th>
+                      <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {items_html}
+                </tbody>
+              </table>
+
+              <p><strong>Subtotal:</strong> Rs. {total_price}<br>
+              <strong>Shipping:</strong> {shipping_display}<br>
+              <strong>Total Amount:</strong> Rs. {order.total_price}<br>
+              <strong>Payment Method:</strong> {order.payment_method}</p>
+
+              <p><strong>Shipping Address:</strong><br>
+                {order.address}</p>
+
+              <p>Thank you for shopping with us ❤️</p>
+              <br>
+              <br>
+              <p>Cara Collections Team</p>
+            </div>
+        </body>
+        </html>
+        """ 
+        
+        email = EmailMessage(
+         subject=f"Order Confirmation - Order #{order.id}",
+         body=html_message,
+         from_email=settings.EMAIL_HOST_USER,
+         to=[order.email],
+        )
+        email.content_subtype = "html"  # Important: tells Django this is HTML
+        email.send(fail_silently=False)
 
         # Clear cart
         cart.items.all().delete()
