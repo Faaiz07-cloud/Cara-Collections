@@ -75,7 +75,7 @@
           <li>
             <a href="{% url 'profile' %}" class="profile">
               <img
-                src="{% if user.is_authenticated and user.userprofile.profile_pic %}{{ user.userprofile.profile_pic.url }}{% else %}{{ MEDIA_URL }}profiles/default.png{% endif %}"
+                src="{% if user.is_authenticated and user.userprofile.profile_pic %}{{ user.userprofile.profile_pic.url }}{% else %}{{ MEDIA_URL }}profiles/user.png{% endif %}"
                 alt="Profile"
                 style="
                   width: 37px;

@@ -64,7 +64,7 @@ class UserProfile(models.Model):
     # extra fields
     phone = models.CharField(max_length=15, blank=True, null=True)
     address = models.CharField(max_length=100, blank=True, null=True)
-    profile_pic = models.ImageField(upload_to='profiles/', default='profiles/default.png')
+    profile_pic = models.ImageField(upload_to='profiles/', default='profiles/user.png')
     gender_choices = (
         ('M','Male'),
         ('F','Female'),
