@@ -34,8 +34,8 @@ if (products.length > 0) {  // check NodeList is not empty
   });
 }
 
-var main_image = document.getElementById("main");
-var small_image = document.getElementsByClassName("s_img");
+var main_image = document.getElementById("mainImage");
+var small_image = document.getElementsByClassName("thumb");
 
 for (let i = 0; i < small_image.length; i++) {
   small_image[i].onclick = function () {
@@ -69,4 +69,4 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.6 });
 
 observer.observe(video);
-// ---------------------------------------
+// --------------------------------------- 
