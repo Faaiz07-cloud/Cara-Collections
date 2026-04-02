@@ -7,6 +7,7 @@ Cara | Profile
 {% endblock %}
 
 {% block content %}
+
 <div class="profile-container">
     <h2>{{ request.user.username }}'s Profile</h2>
     
@@ -33,4 +34,5 @@ Cara | Profile
         <a href="{% url 'logout' %}" class="btn logout-btn">Log Out</a>
     </div>
 </div>
+
 {% endblock %}

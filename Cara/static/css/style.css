@@ -1564,6 +1564,8 @@ Product Detail Page
   cursor: pointer;
   transition: 0.3s;
   border: 2px solid transparent;
+  box-sizing: border-box;
+  flex-shrink: 0;
 }
 
 #prod-details .small-img img:hover {
@@ -1658,6 +1660,8 @@ Product Detail Page
   #prod-details .small-img img {
     width: 90px;
     height: 90px;
+    box-sizing: border-box;
+    flex-shrink: 0;
   }
 
   #prod-details .prod-desc {
@@ -1667,6 +1671,66 @@ Product Detail Page
 
   .product-details-section-p1 {
     padding: 28px 80px 15px 80px;
+  }
+}
+
+@media (max-width: 600px) {
+  #prod-details .small-img-group {
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 5px;
+    overflow-x: auto;
+    box-sizing: border-box;
+  }
+
+  #prod-details .small-img img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 2px solid transparent;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+
+  #prod-details .small-img img:hover,
+  #prod-details .small-img img:focus,
+  #prod-details .small-img img:active {
+    border-color: #088178;
+    transform: scale(1.1);
+  }
+}
+
+@media (min-width: 700px) and (max-width: 800px) {
+  #prod-details .small-img-group {
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 5px;
+    overflow-x: auto;
+    box-sizing: border-box;
+  }
+
+  #prod-details .small-img img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 2px solid transparent;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+
+  #prod-details .small-img img:hover,
+  #prod-details .small-img img:focus,
+  #prod-details .small-img img:active {
+    border-color: #088178;
+    transform: scale(1.1);
   }
 }
 /*
@@ -1708,7 +1772,7 @@ Blog Page
 }
 
 #blog {
-  padding: 110px 150px 0 150px;
+  padding: 110px 150px 7px 150px;
 }
 
 #blog .blog-box {
@@ -1785,7 +1849,7 @@ Blog Page
 
 @media (max-width: 480px) {
   #blog {
-    padding: 60px 20px 0 20px;
+    padding: 60px 20px 1px 20px;
   }
 
   #blog-page-header {
@@ -2127,43 +2191,50 @@ contact page
 }
 
 /* responsive */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .contact-section-p1 {
-    padding: 30px 15px;
+    padding: 50px 40px;
   }
 
   .contact-container {
     grid-template-columns: 1fr;
-    gap: 25px;
-    padding: 20px;
+    gap: 35px;
+    padding: 35px;
   }
 
   .contact-info h2,
   .contact-form h2 {
+    font-size: 26px;
+  }
+
+  .contact-form .contact_heading {
+    margin-top: -33px;
+  }
+
+  #thank-you-section {
+    width: 90%;
+    max-width: 360px;
+    margin: 30px auto;
+    padding: 25px 20px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    animation: slideFadeIn 0.6s forwards;
+    font-size: 16px;
+  }
+  #thank-you-section h2 {
     font-size: 22px;
+    color: #27ae60;
+    margin-bottom: 15px;
+    font-weight: 700;
   }
 
-  .contact-desc {
-    font-size: 13px;
-  }
-
-  .contact-box {
-    gap: 10px;
-  }
-
-  .contact-box i {
-    font-size: 18px;
-  }
-
-  .contact-form input,
-  .contact-form textarea {
-    font-size: 13px;
-    padding: 10px 12px;
-  }
-
-  .contact-form button {
+  #thank-you-section p {
     font-size: 14px;
-    padding: 10px;
+    color: #555;
+    margin-bottom: 10px;
+    line-height: 1.5;
   }
 }
 
@@ -2418,7 +2489,55 @@ cart page
 /* Responsive */
 @media (max-width: 768px) {
   .cart-wrapper {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: auto;
+    justify-content: flex-start;
+    margin-top: 35px;
+    margin-bottom: 35px;
+  }
+
+  .cart-item {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .price {
+    font-weight: 600;
+    margin-left: 20px;
+    margin-top: -10px;
+  }
+
+  .remove {
+    margin-top: -8px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .cart-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: auto;
+    margin-top: 55px;
+    margin-bottom: 40px;
+  }
+
+  .cart-item {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+
+  .price {
+    font-weight: 600;
+    margin-left: 20px;
+    margin-top: -10px;
+  }
+
+  .remove {
+    margin-top: -8px;
   }
 }
 
@@ -2489,11 +2608,9 @@ login signup form
   width: 100%;
   min-height: 100vh;
   background-color: #e3e6f3;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 10px;
 }
 
@@ -2562,9 +2679,38 @@ login signup form
 }
 
 /* responsive */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .login-card {
-    max-width: 95%;
+    max-width: 100%;
+    width: 100%;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    border: none !important;
+    margin: 0;
+  }
+
+  .card {
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  .login-section {
+    background-color: #ffffff;
+    padding: 0;
+  }
+
+  .login-card .row {
+    flex-direction: column;
+  }
+
+  .login-card .col-md-6:first-child {
+    display: none;
+  }
+
+  .login-card .card-body {
+    padding: 20px;
+    background: #ffffff;
   }
 
   .login-heading {
@@ -2655,13 +2801,76 @@ profile page
 
 /* Responsive */
 @media screen and (max-width: 600px) {
+  .profile-container {
+    width: 100%;
+    padding: 30px 20px;
+    margin-top: 0px;
+    background: #f9f9f9;
+    border-radius: 0px;
+    box-shadow: none;
+  }
+
+  .profile-container h2 {
+    font-size: 22px;
+    margin-bottom: 25px;
+    color: #333;
+  }
+
   .profile-card {
     flex-direction: column;
     text-align: center;
+    gap: 25px;
+    margin: 0 auto 25px auto;
   }
 
   .profile-img img {
+    width: 140px;
+    height: 140px;
     margin-bottom: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #6c63ff;
+  }
+
+  .profile-details p {
+    font-size: 15px;
+    margin: 10px 0;
+    line-height: 1.5;
+    color: #555;
+  }
+
+  .profile-actions {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .profile-actions .btn {
+    display: block;
+    width: 85%;
+    margin: 10px auto;
+    padding: 12px 0;
+    font-size: 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: 0.3s;
+  }
+
+  .edit-btn {
+    background-color: #6c63ff;
+    color: white;
+  }
+
+  .edit-btn:hover {
+    background-color: #5750d4;
+  }
+
+  .logout-btn {
+    background-color: #ff6b6b;
+    color: white;
+  }
+
+  .logout-btn:hover {
+    background-color: #e55a5a;
   }
 }
 /* 
@@ -2739,7 +2948,10 @@ edit profile page
 /* Responsive */
 @media screen and (max-width: 600px) {
   .edit-profile-container {
-    padding: 20px;
+    padding: 20px 20px 35px 20px;
+    box-shadow: none;
+    border-radius: 0px;
+    margin-top: 0px;
   }
 }
 /* 
@@ -2836,6 +3048,100 @@ forgot password page 1
   color: #555;
   text-align: center;
 }
+
+/* responsive */
+@media (max-width: 768px) {
+  .login-container {
+    width: 90%;
+    max-width: 360px;
+    margin: 40px auto;
+    padding: 25px 20px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    font-size: 16px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideFadeIn 0.6s forwards;
+    transition: none;
+  }
+
+  .login-container:hover {
+    transform: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .login-container h2 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+    text-align: left;
+  }
+
+  .form-group label {
+    font-size: 15px;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 14px 12px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: border 0.3s ease;
+  }
+
+  .form-group input:focus {
+    border-color: #2575fc;
+    box-shadow: 0 0 5px rgba(37, 117, 252, 0.3);
+  }
+
+  .login-container button {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 12px;
+    background-color: #2575fc;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .login-container button:hover {
+    background-color: #2575fc;
+    transform: none;
+  }
+
+  .login-container p {
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    margin-top: 15px;
+  }
+}
+
+@keyframes slideFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 /*
 forgot password page 1
 */
@@ -2873,6 +3179,85 @@ forgot password page 2
   font-size: 14px;
   color: #555;
   margin-top: 10px;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .reset-done-container {
+    width: 90%;
+    max-width: 360px;
+    margin: 40px auto;
+    padding: 25px 20px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideFadeIn 0.6s forwards;
+  }
+
+  .reset-done-container .icon {
+    font-size: 48px;
+    color: #2575fc;
+    margin-bottom: 15px;
+    transform: scale(0);
+    animation: iconPop 0.5s 0.6s forwards;
+  }
+
+  .reset-done-container h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .reset-done-container p {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  .reset-done-container button {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #2575fc;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .reset-done-container button:hover {
+    background-color: #1e5ed1;
+  }
+}
+
+@keyframes slideFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes iconPop {
+  0% {
+    transform: scale(0);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 /*
 forgot password page 2
@@ -2961,6 +3346,96 @@ forgot password page 3
   background-color: #6a11cb;
   transform: translateY(-2px);
 }
+
+/* responsive */
+@media (max-width: 768px) {
+  .reset-password-container {
+    width: 90%;
+    max-width: 360px;
+    margin: 40px auto;
+    padding: 25px 20px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    font-size: 16px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideFadeIn 0.6s forwards;
+    transition: none;
+  }
+
+  .reset-password-container:hover {
+    transform: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .reset-password-container h2 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .reset-password-container div {
+    margin-bottom: 18px;
+    text-align: left;
+  }
+
+  .reset-password-container label {
+    font-size: 15px;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .reset-password-container input {
+    width: 100%;
+    padding: 14px 12px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: border 0.3s ease;
+  }
+
+  .reset-password-container input:focus {
+    border-color: #2575fc;
+    box-shadow: 0 0 5px rgba(37, 117, 252, 0.3);
+  }
+
+  .reset-password-container button {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 12px;
+    background-color: #2575fc;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .reset-password-container button:hover {
+    background-color: #2575fc;
+  }
+
+  .text-danger {
+    font-size: 14px;
+    color: #e74c3c;
+    margin-top: 5px;
+  }
+}
+
+@keyframes slideFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 /*
 forgot password page 3
 */
@@ -3010,6 +3485,74 @@ forgot password page 4
 .reset-complete-container a:hover {
   background-color: #6a11cb;
   transform: translateY(-2px);
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .reset-complete-container {
+    width: 90%;
+    max-width: 360px;
+    margin: 40px auto;
+    padding: 25px 20px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    font-size: 16px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideFadeIn 0.6s forwards;
+    transition: none;
+  }
+
+  .reset-complete-container:hover {
+    transform: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .reset-complete-container h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .reset-complete-container a {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    margin-top: 15px;
+    background-color: #2575fc;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 12px;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .reset-complete-container a:hover {
+    background-color: #2575fc;
+    transform: none;
+  }
+}
+
+@keyframes slideFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 /*
 forgot password page 4
