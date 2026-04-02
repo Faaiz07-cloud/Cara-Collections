@@ -378,7 +378,7 @@ homepage
 homepage
 */
 
-/* 
+/*
 features
 */
 .section-p1 {
@@ -442,7 +442,7 @@ features
 #feature .feature-box:nth-child(6) h6 {
   background-color: #fff2e5;
 }
-/* 
+/*
 features
 */
 
@@ -533,7 +533,7 @@ products
 products
 */
 
-/* 
+/*
 categories
 */
 .category-section {
@@ -656,7 +656,7 @@ categories
     font-size: 12px;
   }
 }
-/* 
+/*
 categories
 */
 
@@ -1177,6 +1177,7 @@ Responsive - Multi Pages
     box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
     padding: 80px 0 0 10px;
     transition: 0.3s ease;
+    z-index: 1000;
   }
 
   #navbar.active {
@@ -2737,7 +2738,7 @@ login signup form
 login signup form
 */
 
-/* 
+/*
 profile page
 */
 .profile-container {
@@ -2889,11 +2890,11 @@ profile page
     background-color: #e55a5a;
   }
 }
-/* 
+/*
 profile page
 */
 
-/* 
+/*
 edit profile page
 */
 .edit-profile-container {
@@ -2970,7 +2971,7 @@ edit profile page
     margin-top: 0px;
   }
 }
-/* 
+/*
 edit profile page
 */
 

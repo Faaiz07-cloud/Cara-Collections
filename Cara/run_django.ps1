@@ -5,7 +5,7 @@ Set-Location -Path "C:\Users\faaiz\Cara Collections\Cara"
 & "C:\Users\faaiz\Cara Collections\venv\Scripts\Activate.ps1"
 
 # Start Django server in a new window
-Start-Process python -ArgumentList "manage.py runserver 1899" -WindowStyle Hidden
+Start-Process python -ArgumentList "manage.py runserver 1849" -WindowStyle Hidden
 
 # Open browser automatically
-Start-Process "http://127.0.0.1:1899"
+Start-Process "http://127.0.0.1:1849"
