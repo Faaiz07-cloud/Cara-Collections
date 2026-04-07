@@ -51,4 +51,11 @@ urlpatterns = [
     path('checkout/', views.CheckoutView, name='checkout'),
     path('place-order/', views.PlaceOrder, name='place_order'),
     path('order-success/<int:order_id>/', views.OrderSuccess, name='order_success'),
+
+    # Admin Urls
+    path('master_admin/', views.master_admin, name='master_admin'),
+    path('dashboard/', views.admin_dashboard, name='admin_dashboard'),
+    path('add_product/', views.add_inventory, name='add_inventory'),
+    path('admin_product_d/<int:pk>/', views.AdminProductDetails, name='admin_product_details'),
+    path('product_delete/<int:pk>/', views.delete_product, name='delete_product'),
 ]

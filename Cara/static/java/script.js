@@ -35,15 +35,23 @@ if (products.length > 0) {  // check NodeList is not empty
 }
 
 var main_image = document.getElementById("mainImage");
-var small_image = document.getElementsByClassName("thumb");
+var small_images = document.getElementsByClassName("thumb");
 
-for (let i = 0; i < small_image.length; i++) {
-  small_image[i].onclick = function () {
-    let temp = main_image.src;
-    main_image.src = small_image[i].src;
-    small_image[i].src = temp;
+for (let i = 0; i < small_images.length; i++) {
+  small_images[i].onclick = function () {
+    
+    // Change main image
+    main_image.src = this.src;
+
+    // Remove active class from all
+    for (let j = 0; j < small_images.length; j++) {
+      small_images[j].classList.remove("active");
+    }
+
+    // Add active to clicked one
+    this.classList.add("active");
   };
-}
+}   
 
 // video in about page
 const video = document.querySelector("#about-video video");
@@ -69,4 +77,4 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.6 });
 
 observer.observe(video);
-// --------------------------------------- 
+// ---------------------------------------

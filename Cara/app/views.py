@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from datetime import timedelta
-from app.models import Category, SubCategory, Inventory,  banner, Cart, CartItem, OrderItem, Order
+from app.models import Category, SubCategory, Inventory,  banner, Cart, CartItem, OrderItem, Order, ProductGallery
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login
@@ -10,6 +10,7 @@ from .forms import SignUpForm
 from .forms import LoginForm
 from .forms import ProfileForm
 from .forms import ContactForm
+from .forms import InventoryForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -18,7 +19,66 @@ from django.core.mail import EmailMultiAlternatives
 from django.conf import settings
 from .models import Contact
 from django.contrib import messages
+from django.contrib.auth.decorators import user_passes_test
 
+# Admin Views
+def is_superuser(user):
+    return user.is_superuser
+
+@user_passes_test(is_superuser)
+def master_admin(request):
+    if not request.user.is_authenticated or not request.user.is_superuser:
+        return redirect('login')
+    
+    return render(request, 'admin_dashboard/master_admin.html')
+
+@user_passes_test(is_superuser)
+def admin_dashboard(request):
+    products = Inventory.objects.all().order_by('-created_at')
+    context = {
+     'products': products
+    }
+
+    return render(request, 'admin_dashboard/dashboard.html', context)
+
+@user_passes_test(is_superuser)
+def add_inventory(request):
+    if request.method == 'POST':
+        form = InventoryForm(request.POST, request.FILES)
+        multiple_files = request.FILES.getlist('prod_gallery')
+        if form.is_valid():
+            product = form.save()
+            for file in multiple_files:
+                ProductGallery.objects.create(prod_gallery=file, inventory=product)
+            messages.success(request, "Product added successfully.")
+            return redirect('admin_dashboard')
+    else:
+        form = InventoryForm()
+        context = {
+         'form': form
+        }
+
+        return render(request, 'admin_dashboard/add_inventory.html', context)
+
+@user_passes_test(is_superuser)
+def AdminProductDetails(request, pk):
+    product = get_object_or_404(Inventory, pk=pk)
+    context = {
+    'product': product,
+    }
+
+    return render(request,'admin_dashboard/admin_product_details.html', context)   
+
+@user_passes_test(is_superuser)
+def delete_product(request, pk):
+    product = get_object_or_404(Inventory, pk=pk)
+    
+    if request.method == "POST":
+        product.delete()
+        messages.success(request, "Product deleted successfully.")
+        return redirect('admin_dashboard')
+
+# Public Views
 def Master(request):
     return render(request,'master.html')
 
@@ -137,7 +197,7 @@ def ContactSuccess(request):
     return render(request, "contact_success.html")
 
 def Blog(request):
-    banners = banner.objects.filter(is_active=True)
+    banners = banner.objects.filter(is_active=True).order_by('-id')
     context = {
     'banners' : banners
     }
@@ -194,8 +254,12 @@ def Login(request):
         form = LoginForm(request, data=request.POST)
         if form.is_valid():
             user = form.get_user()
-            login(request, user)
-            return redirect('index')
+            if user is not None:
+              login(request, user)
+              if user.is_superuser:
+                  return redirect('admin_dashboard')
+              else:
+                  return redirect('index')
         context = {
         'form': form    
         }

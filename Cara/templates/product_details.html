@@ -2,7 +2,9 @@
 
 {% load static %}
 
-{% block title %} Cara | Shop {% endblock %} 
+{% block title %}
+Cara | Shop
+{% endblock %} 
 
 {% block content %}
 
@@ -34,6 +36,7 @@
       </div>
 
       <div class="thumbnail-grid">
+        <img src="{{ product.p_img.url }}" class="thumb active"/>
         {% for image in product.prod_gallery.all %}
         <img src="{{ image.prod_gallery.url }}" class="thumb" />
         {% endfor %}
@@ -126,4 +129,4 @@
 </section>
 <!-- featured products -->
 
-{% endblock %} 
+{% endblock %}

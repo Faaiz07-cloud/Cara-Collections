@@ -3,9 +3,14 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
-from .models import UserProfile, Contact
+from .models import UserProfile, Contact, Inventory
 from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.forms import SetPasswordForm
+
+class InventoryForm(forms.ModelForm):
+    class Meta:
+        model = Inventory
+        fields = '__all__'
 
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=254, required=True, widget=forms.TextInput(attrs={'class':'form-control form-control-lg'}))

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Cara{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Spartan:wght@100..900&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    
+    <!-- navbar -->
+    <section id="header">
+      <img
+        src="{% static 'img/logo.png' %}"
+        class="logo"
+        alt="error loading image"
+      />
+      <div>
+        <ul id="navbar">
+          <li>
+            <a
+              class="{% if request.resolver_match.url_name == 'admin_dashboard' or request.resolver_match.url_name == 'admin_product_details' %}active{% endif %}"
+              href="{% url 'admin_dashboard' %}"
+              >Inventory</a
+            >
+          </li>
+          <li>
+            <a
+              class="{% if request.resolver_match.url_name == 'blog' %}active{% endif %}"
+              href="{% url 'blog' %}"
+              >Blog</a
+            >
+          </li>
+          <li>
+            <a
+              class="{% if request.resolver_match.url_name == 'category' %}active{% endif %}"
+              href=""
+              >Category</a
+            >
+          </li>
+
+          <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+        </ul>
+      </div>
+
+      <div id="mobile">
+        <i id="bar" class="fa-solid fa-bars"></i>
+      </div>
+    </section>
+    <!-- navbar -->
+
+    {% if messages %}
+    <div class="messages-container">
+      {% for message in messages %}
+      <div>{{ message }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% block content %} {% endblock %}
+    
+    <script src="{% static 'java/script.js' %}"></script>
+  </body>
+</html>

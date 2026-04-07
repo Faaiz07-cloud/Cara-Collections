@@ -1,0 +1,83 @@
+{% extends 'admin_dashboard/master_admin.html' %}
+
+{% load static %}
+
+{% block title %}
+Product Details | Admin 
+{% endblock %}
+
+{% block content %}
+
+<!-- product details -->
+<section id="product-detail-modern">
+  <div class="product-container">
+    <div class="product-gallery">
+      <div class="main-image-wrapper">
+        <img
+          src="{{ product.p_img.url }}"
+          id="mainImage"
+          alt="{{ product.p_name }}"
+        />
+      </div>
+
+      <div class="thumbnail-grid">
+        <img src="{{ product.p_img.url }}" class="thumb active" />
+        {% for image in product.prod_gallery.all %}
+        <img src="{{ image.prod_gallery.url }}" class="thumb" />
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="product-info">
+      <header class="product-header">
+        <span class="brand-tag">{{ product.p_brand }}</span>
+        <h1 class="product-title">{{ product.p_name }}</h1>
+
+        <div class="rating-container">
+          <div class="stars">
+            {% for i in "12345" %} {% if forloop.counter <= product.p_rating %}
+            <i class="fas fa-star"></i>
+            {% else %}
+            <i class="far fa-star"></i>
+            {% endif %} {% endfor %}
+          </div>
+          <span class="rating-text">({{ product.p_rating }}/5)</span>
+        </div>
+      </header>
+
+      <div class="price-box">
+        <span class="currency">$</span>
+        <span class="amount">{{ product.p_price }}</span>
+      </div>
+
+      <div class="product-description">
+        <h3>Description</h3>
+        <p>{{ product.p_desc }}</p>
+      </div>
+
+      <div class="action-area">
+        <a href="" class="btn-primary-edit">
+          <span>Edit Product</span>
+          <i class="fa-regular fa-pen-to-square me-1"></i>
+        </a>
+        <form
+          method="POST"
+          action="{% url 'delete_product' product.id %}"
+          style="display: inline"
+          onsubmit="
+            return confirm('Are you sure you want to delete this product?');
+          "
+        >
+          {% csrf_token %}
+          <button type="submit" class="btn-primary-delete">
+            <span>Delete Product</span>
+            <i class="fa-regular fa-trash-can me-1"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- product details -->
+
+{% endblock %}

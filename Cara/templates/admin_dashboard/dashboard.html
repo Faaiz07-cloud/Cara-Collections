@@ -1,0 +1,56 @@
+{% extends 'admin_dashboard/master_admin.html' %}
+
+{% load static %}
+
+{% block title %} 
+Inventory | Admin
+{% endblock %}
+
+{% block content %}
+
+<!-- Inventory Header -->
+<div class="inventory-header-elegant">
+  <div class="header-content">
+    <div class="title-group">
+      <h3 class="page-title">Product Inventory</h3>
+      <span class="product-badge">{{ products|length }} Items</span>
+    </div>
+
+    <div class="action-group">
+      <a href="{% url 'add_inventory' %}" class="btn-add-elegant">
+        <i class="fa-solid fa-plus"></i>
+        <span>Add Product</span>
+      </a>
+    </div>
+  </div>
+</div>
+<!-- Inventory Header -->
+
+<!-- Product Grid -->
+<section id="product1" class="product-section-p1 section-margin">
+  <div class="product-box">
+    {% for product in products %}
+    <div class="prod">
+      <img src="{{ product.p_img.url }}" alt="{{ product.p_name }}" />
+      <div class="desc">
+        <span>{{ product.p_brand }}</span>
+        <h5>{{ product.p_name }}</h5>
+        <div class="rating">
+          {% for i in "12345" %} {% if forloop.counter <= product.p_rating %}
+          <i class="fas fa-star"></i>
+          {% else %}
+          <i class="far fa-star"></i>
+          {% endif %} {% endfor %}
+        </div>
+        <h4>${{ product.p_price }}</h4>
+      </div>
+      <a href="{% url 'admin_product_details' product.id %}"
+        ><i class="fa-solid fa-pen-to-square cart"></i
+      ></a>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+<!-- Product Grid -->
+
+{% endblock %}

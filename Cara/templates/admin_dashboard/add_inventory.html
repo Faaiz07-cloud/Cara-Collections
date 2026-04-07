@@ -1,0 +1,12 @@
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  
+  <!-- Main product fields -->
+  {{ form.as_p }}
+  
+  <!-- Multiple Images for Gallery -->
+  <label for="id_prod_gallery">Product Gallery (Multiple Images):</label>
+  <input type="file" name="prod_gallery" id="id_prod_gallery" multiple>
+  
+  <button type="submit" class="btn-primary">Add Product</button>
+</form>
