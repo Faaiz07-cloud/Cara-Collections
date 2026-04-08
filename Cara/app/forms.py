@@ -10,8 +10,26 @@ from django.contrib.auth.forms import SetPasswordForm
 class InventoryForm(forms.ModelForm):
     class Meta:
         model = Inventory
-        fields = '__all__'
+        
+        fields = [
+            'p_name', 'p_img', 'p_brand', 'p_price', 
+            'category', 'sub_category', 'p_rating', 
+            'p_desc', 'is_featured'
+        ]
 
+    # custom validations
+    def clean_p_price(self):
+        get_price = self.cleaned_data.get('p_price')
+        if get_price <= 0:
+            raise forms.ValidationError("Price must be greater than zero!")
+        return get_price
+
+    def clean_p_rating(self):
+        get_rating = self.cleaned_data.get('p_rating')
+        if get_rating < 0 or get_rating > 5:
+            raise forms.ValidationError("Rating must be between 0 and 5!")
+        return get_rating  
+        
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=254, required=True, widget=forms.TextInput(attrs={'class':'form-control form-control-lg'}))
     last_name = forms.CharField(max_length=254, required=True, widget=forms.TextInput(attrs={'class':'form-control form-control-lg'}))
@@ -77,9 +95,6 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['phone', 'address', 'gender', 'profile_pic']
-        widgets = {
-            'profile_pic': forms.FileInput(attrs={'class': 'form-control-file'}),
-        }
 
 class CustomPasswordResetForm(PasswordResetForm):
     email = forms.EmailField(max_length=254, widget=forms.EmailInput(attrs={'placeholder': 'Enter your registered email'}))

@@ -52,10 +52,24 @@ def add_inventory(request):
                 ProductGallery.objects.create(prod_gallery=file, inventory=product)
             messages.success(request, "Product added successfully.")
             return redirect('admin_dashboard')
+        else:
+            categories = Category.objects.all()
+            sub_categories = SubCategory.objects.all()
+            context = {
+             'form': form,
+             'categories': categories,
+             'sub_categories': sub_categories
+
+            }
+            return render(request, 'admin_dashboard/add_inventory.html', context)
     else:
         form = InventoryForm()
+        categories = Category.objects.all()
+        sub_categories = SubCategory.objects.all()
         context = {
-         'form': form
+         'form': form,
+         'categories': categories,
+         'sub_categories': sub_categories
         }
 
         return render(request, 'admin_dashboard/add_inventory.html', context)
