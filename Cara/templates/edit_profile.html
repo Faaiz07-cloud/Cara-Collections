@@ -6,227 +6,270 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Profile</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <style>
+  </head>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg-gray: #f6f6f7;
+      --border-color: #d2d5d8;
+      --primary-blue: #008060;
+      --primary-hover: #005e46;
+      --text-dark: #202223;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: var(--bg-gray);
+      color: var(--text-dark);
+      margin: 0;
+      padding: 40px 20px 0px 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 800px;
+      margin-top: -4px;
+    }
+
+    .header {
+      margin-bottom: 24px;
+    }
+
+    .header h1 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+      padding: 24px;
+      margin-bottom: 20px;
+      border: 1px solid #e1e3e5;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: block;
+      text-align: center;
+      margin-left: -25px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    p input,
+    p select,
+    p textarea,
+    input[type="text"],
+    input[type="number"],
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 14px;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+
+    p input:focus {
+      outline: none;
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 2px rgba(0, 128, 96, 0.1);
+    }
+
+    .shopify-input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #d2d5d8;
+      border-radius: 6px;
+      font-size: 14px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      display: block;
+      box-sizing: border-box;
+    }
+
+    .shopify-checkbox {
+      width: 14px;
+      height: 14px;
+      margin-right: 1px;
+      cursor: pointer;
+      accent-color: #008060;
+    }
+
+    .card label {
+      font-weight: 500;
+      font-size: 14px;
+      color: #202223;
+      display: block;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .checkbox-group label {
+      margin: 0;
+      display: inline;
+    }
+
+    .upload-area {
+      border: 2px dashed #bfc0c2;
+      padding: 40px;
+      text-align: center;
+      border-radius: 8px;
+      background: #fafafa;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .upload-area:hover {
+      background: #f1f1f1;
+    }
+
+    .upload-area p {
+      color: #6d7175;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .action-bar {
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 5px;
+      border-top: none;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-blue);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+    }
+
+    form p {
+      margin: 0 0 1.5rem 0;
+    }
+
+    .text-danger {
+      color: red;
+      font-size: 13px;
+    }
+
+    #gender {
+      color: #6d7175;
+    }
+
+    select option[value=""]:first-child {
+      font-style: italic;
+    }
+
+    .custom-file-upload input[type="file"] {
+      display: none;
+    }
+
+    .upload-btn {
+      background-color: #4caf50;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .upload-btn:hover {
+      background-color: #45a049;
+    }
+
+    .file-name {
+      margin-left: 10px;
+      font-style: italic;
+      color: #555;
+    }
+
+    .preview_img {
+      margin-bottom: 10px;
+      margin-top: 2px;
+      transition: 0.3s ease;
+      border-radius: 5px;
+    }
+
+    .text-danger {
+      display: block;
+      margin-top: 5px;
+      color: #e74c3c;
+      font-size: 14px;
+    }
+
+    .preview_img:hover {
+      transform: scale(1.05);
+    }
+
+    @media screen and (min-width: 400px) and (max-width: 420px) {
+      .container {
+        padding: 0 7px;
+        margin-top: 50px;
+      }
+
       :root {
-        --bg-gray: #f6f6f7;
+        --bg-gray: #ffffff;
         --border-color: #d2d5d8;
         --primary-blue: #008060;
         --primary-hover: #005e46;
         --text-dark: #202223;
         --white: #ffffff;
-      }
-
-      body {
-        font-family: "Inter", sans-serif;
-        background-color: var(--bg-gray);
-        color: var(--text-dark);
-        margin: 0;
-        padding: 40px 20px;
-        display: flex;
-        justify-content: center;
-      }
-
-      .container {
-        width: 100%;
-        max-width: 800px;
-        margin-top: 57px;
-      }
-
-      .header {
-        margin-bottom: 24px;
-      }
-
-      .header h1 {
-        font-size: 20px;
-        font-weight: 600;
-        margin: 0;
-      }
-
-      .card {
-        background: var(--white);
-        border-radius: 8px;
-        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-        padding: 24px;
-        margin-bottom: 20px;
-        border: 1px solid #e1e3e5;
+        .card {
+          background: none;
+          box-shadow: none;
+          border: none;
+          border-radius: 0;
+          padding: 0;
+          margin-bottom: 0;
+        }
       }
 
       .card-title {
-        font-size: 20px;
-        font-weight: 600;
-        margin-bottom: 16px;
-        display: block;
         text-align: center;
+        margin-bottom: 25px;
+        margin-top: -30px;
+        margin-left: 0px;
       }
-
-      .form-group {
-        margin-bottom: 16px;
-      }
-
-      label {
-        display: block;
-        font-size: 14px;
-        font-weight: 500;
-        margin-bottom: 8px;
-      }
-
-      p input,
-      p select,
-      p textarea,
-      input[type="text"],
-      input[type="number"],
-      textarea {
-        width: 100%;
-        padding: 10px 12px;
-        border: 1px solid var(--border-color);
-        border-radius: 6px;
-        font-size: 14px;
-        box-sizing: border-box;
-        transition: border-color 0.2s;
-      }
-
-      p input:focus {
-        outline: none;
-        border-color: var(--primary-blue);
-        box-shadow: 0 0 0 2px rgba(0, 128, 96, 0.1);
-      }
-
-      .shopify-input {
-        width: 100%;
-        padding: 10px 12px;
-        border: 1px solid #d2d5d8;
-        border-radius: 6px;
-        font-size: 14px;
-        margin-top: 5px;
-        margin-bottom: 15px;
-        display: block;
-        box-sizing: border-box;
-      }
-
-      .shopify-checkbox {
-        width: 14px;
-        height: 14px;
-        margin-right: 1px;
-        cursor: pointer;
-        accent-color: #008060; 
-      }
-
-      .card label {
-        font-weight: 500;
-        font-size: 14px;
-        color: #202223;
-        display: block;
-      }
-
-      .checkbox-group {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .checkbox-group label {
-        margin: 0;
-        display: inline;
-      }
-
-      .upload-area {
-        border: 2px dashed #bfc0c2;
-        padding: 40px;
-        text-align: center;
-        border-radius: 8px;
-        background: #fafafa;
-        cursor: pointer;
-        transition: background 0.3s;
-      }
-
-      .upload-area:hover {
-        background: #f1f1f1;
-      }
-
-      .upload-area p {
-        color: #6d7175;
-        font-size: 14px;
-        margin: 0;
-      }
-
-      .action-bar {
-        display: flex;
-        justify-content: flex-end;
-        padding-top: 5px;
-        border-top: none;
-      }
-
-      .btn-primary {
-        background-color: var(--primary-blue);
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 6px;
-        font-weight: 600;
-        font-size: 14px;
-        cursor: pointer;
-        transition: background 0.2s;
-      }
-
-      .btn-primary:hover {
-        background-color: var(--primary-hover);
-      }
-
-      form p {
-        margin: 0 0 1.5rem 0;
-      }
-
-      .text-danger {
-        color: red;
-        font-size: 13px;
-      }
-
-      #gender {
-        color: #6d7175;
-      }
-
-      select option[value=""]:first-child {
-        font-style: italic;
-      }
-
-      .custom-file-upload input[type="file"] {
-        display: none;
-      }
-
-      .upload-btn {
-        background-color: #4caf50;
-        color: white;
-        padding: 8px 16px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-weight: 500;
-        transition: background 0.3s;
-      }
-
-      .upload-btn:hover {
-        background-color: #45a049;
-      }
-
-      .file-name {
-        margin-left: 10px;
-        font-style: italic;
-        color: #555;
-      }
-    
-      @media screen and (min-width: 400px) and (max-width: 420px) {
-        .container {
-          margin-top: 173px;
-        }  
-      }
-    </style>
-  </head>
+    }
+  </style>
   <body>
-
     <!-- Edit Profile Form -->
     <div class="container">
       <form method="POST" enctype="multipart/form-data">
@@ -240,13 +283,22 @@
             <input
               type="text"
               name="phone"
+              value="{{ form.phone.value|default_if_none:'' }}"
               placeholder="e.g. +92 321 1234567"
               class="shopify-input"
             />
+            <small class="text-danger">{{ form.phone.errors }}</small>
           </div>
 
           <div class="form-group">
             <label>Profile Picture</label>
+            {% if form.instance.profile_pic %}
+            <img
+              class="preview_img"
+              src="{{ form.instance.profile_pic.url }}"
+              width="150"
+            />
+            {% endif %}
             <div class="custom-file-upload">
               <button type="button" class="upload-btn">Choose File</button>
               <span class="file-name">No file chosen</span>
@@ -259,6 +311,7 @@
             <input
               type="text"
               name="address"
+              value="{{ form.address.value|default_if_none:'' }}"
               placeholder="e.g. 123 Main St, City, Country"
               class="shopify-input"
             />
@@ -268,14 +321,30 @@
             <label>Select Gender</label>
             <select name="gender" id="gender" class="shopify-input">
               <option value="">Select Gender</option>
-              <option value="M">Male</option>
-              <option value="F">Female</option>
-              <option value="O">Other</option>
+              <option
+                value="M"
+                {% if form.gender.value == "M" %}selected{% endif %}
+              >
+                Male
+              </option>
+              <option
+                value="F"
+                {% if form.gender.value == "F" %}selected{% endif %}
+              >
+                Female
+              </option>
+              <option
+                value="O"
+                {% if form.gender.value == "O" %}selected{% endif %}
+              >
+                Other
+              </option>
             </select>
           </div>
 
-        <div class="action-bar">
-          <button type="submit" class="btn-primary">Save</button>
+          <div class="action-bar">
+            <button type="submit" class="btn-primary">Save</button>
+          </div>
         </div>
       </form>
     </div>

@@ -297,10 +297,15 @@ def edit_profile(request):
         if form.is_valid():
             form.save()
             return redirect('profile')
+        else:
+            context = {
+            'form': form
+            }
+            return render(request, 'edit_profile.html', context)    
     else:
         form = ProfileForm(instance=profile)
         context = {
-        'form': form
+         'form': form
         }
         return render(request, 'edit_profile.html', context)
 

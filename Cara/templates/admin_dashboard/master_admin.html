@@ -35,19 +35,11 @@
           </li>
           <li>
             <a
-              class="{% if request.resolver_match.url_name == 'blog' %}active{% endif %}"
-              href="{% url 'blog' %}"
-              >Blog</a
+              class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}"
+              href="{% url 'index' %}"
+              >Home</a
             >
           </li>
-          <li>
-            <a
-              class="{% if request.resolver_match.url_name == 'category' %}active{% endif %}"
-              href=""
-              >Category</a
-            >
-          </li>
-
           <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
         </ul>
       </div>

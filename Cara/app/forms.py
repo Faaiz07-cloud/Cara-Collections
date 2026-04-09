@@ -1,3 +1,5 @@
+import email
+
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
@@ -95,6 +97,13 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['phone', 'address', 'gender', 'profile_pic']
+
+    def clean_phone(self):
+        phone = self.cleaned_data.get('phone')
+        if len(phone) < 10 or len(phone) > 15:
+            raise forms.ValidationError('Phone number must be between 10 and 15 digits!')   
+        else:
+            return phone      
 
 class CustomPasswordResetForm(PasswordResetForm):
     email = forms.EmailField(max_length=254, widget=forms.EmailInput(attrs={'placeholder': 'Enter your registered email'}))

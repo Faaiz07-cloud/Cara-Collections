@@ -62,15 +62,15 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     # extra fields
-    phone = models.CharField(max_length=15, blank=True, null=True)
-    address = models.CharField(max_length=100, blank=True, null=True)
+    phone = models.CharField(max_length=30, blank=True, null=True, default='+92')
+    address = models.CharField(max_length=100, blank=True, null=True, default='Not Provided')
     profile_pic = models.ImageField(upload_to='profiles/', default='profiles/user.png')
     gender_choices = (
         ('M','Male'),
         ('F','Female'),
         ('O','Other')
     )
-    gender = models.CharField(max_length=1, choices=gender_choices, blank=True)
+    gender = models.CharField(max_length=1, choices=gender_choices, blank=True, default='O')
     
     def __str__(self):
         return self.user.username

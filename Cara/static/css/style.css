@@ -2895,87 +2895,6 @@ profile page
 */
 
 /*
-edit profile page
-*/
-.edit-profile-container {
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 30px;
-  background: #f9f9f9;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.edit-profile-container h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  color: #333;
-}
-
-.edit-profile-form p {
-  margin-bottom: 15px;
-}
-
-.edit-profile-form label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: 600;
-  color: #555;
-}
-
-.edit-profile-form input,
-.edit-profile-form select,
-.edit-profile-form textarea {
-  width: 100%;
-  padding: 10px 12px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 15px;
-  transition: 0.3s;
-}
-
-.edit-profile-form input:focus,
-.edit-profile-form select:focus,
-.edit-profile-form textarea:focus {
-  border-color: #6c63ff;
-  box-shadow: 0 0 5px rgba(108, 99, 255, 0.4);
-  outline: none;
-}
-
-.save-btn {
-  display: block;
-  width: 100%;
-  padding: 12px 0;
-  font-size: 16px;
-  background-color: #6c63ff;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
-  font-weight: 500;
-}
-
-.save-btn:hover {
-  background-color: #5750d4;
-}
-
-/* Responsive */
-@media screen and (max-width: 600px) {
-  .edit-profile-container {
-    padding: 20px 20px 35px 20px;
-    box-shadow: none;
-    border-radius: 0px;
-    margin-top: 0px;
-  }
-}
-/*
-edit profile page
-*/
-
-/*
 forgot password page 1
 */
 .login-container {
@@ -4032,17 +3951,17 @@ admin dashboard
 /* responsive */
 @media (max-width: 640px) {
   .inventory-header-elegant {
-    margin: 20px auto 1rem auto; 
-    padding: 1rem 1.25rem; 
-    width: 95%; 
-    border-left-width: 4px; 
+    margin: 20px auto 1rem auto;
+    padding: 1rem 1.25rem;
+    width: 95%;
+    border-left-width: 4px;
   }
 
   .header-content {
-    flex-direction: row; 
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 10px; 
+    gap: 10px;
   }
 
   .title-group {
@@ -4050,21 +3969,21 @@ admin dashboard
   }
 
   .page-title {
-    font-size: 1.1rem; 
+    font-size: 1.1rem;
     white-space: nowrap;
   }
 
   .product-badge {
-    font-size: 0.7rem; 
+    font-size: 0.7rem;
     padding: 2px 8px;
   }
 
   .btn-add-elegant {
-    padding: 8px 14px; 
-    font-size: 0.8rem; 
+    padding: 8px 14px;
+    font-size: 0.8rem;
     border-radius: 8px;
     gap: 6px;
-    width: auto; 
+    width: auto;
     min-width: fit-content;
   }
 
@@ -4078,7 +3997,7 @@ admin dashboard
     font-size: 1rem;
   }
   .btn-add-elegant span {
-    display: none; 
+    display: none;
   }
   .btn-add-elegant {
     padding: 10px;
